@@ -14,14 +14,14 @@ class TestTakkenScraper(unittest.TestCase):
         soup = BeautifulSoup(self.html_content, 'html.parser')
         question, _ = scrape_question(soup)
         
-        expected_question = "次の1から4までの記述のうち、民法の規定、判例及び下記判決文によれば、誤っているものはどれか。"
+        expected_question = "相隣関係に関する次の記述のうち、民法の規定によれば、正しいものはどれか。"
         self.assertEqual(question, expected_question)
 
     def test_number_extraction(self):
         soup = BeautifulSoup(self.html_content, 'html.parser')
         _, number = scrape_question(soup)
         
-        expected_number = "1"
+        expected_number = "2"
         self.assertEqual(number, expected_number)
         
     
