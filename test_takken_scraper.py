@@ -1,36 +1,28 @@
 import unittest
 # from unittest.mock import MagicMock
-from takken_scraper import scrape_question, scrape_year, scrape_category
 from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 
 class TestTakkenScraper(unittest.TestCase):
-    def setUp(self):
-        # テスト用のHTMLファイルを読み込む
-        with open('sample.html', 'r', encoding='utf-8') as f:
-            self.html_content = f.read() 
-        self.soup = BeautifulSoup(self.html_content, 'html.parser')
-            
+    # def setUp(self):
+    #     pass
+    
+    def test_get_title(self):
+        driver = webdriver.Chrome() 
+        driver.get('https://www.selenium.dev/selenium/web/web-form.html')
+        title = driver.title
+        self.assertEqual(title, "Web form")
         
     def test_question_extraction(self):
-        question, _ = scrape_question(self.soup)
-        expected_question = "相隣関係に関する次の記述のうち、民法の規定によれば、正しいものはどれか。"
-        self.assertEqual(question, expected_question)
-
-    def test_number_extraction(self):
-        _, number = scrape_question(self.soup)
-        expected_number = "2"
-        self.assertEqual(number, expected_number)
+        driver = webdriver.Chrome() 
+        driver.get('https://www.selenium.dev/selenium/web/web-form.html')
         
-    def test_year_extraction(self):
-        actual = scrape_year(self.soup)
-        expected = "令和5年"
-        self.assertEqual(actual, expected) 
+        actual = scrape_quetion
+        expected = "1"
+        self.assertEqual(actual, expected)
         
-    def test_category_extraction(self):
-        subject, subtopic = scrape_category(self.soup)
-        expected = "1 - 権利関係"
-        self.assertEqual(subject, expected)
     
 if __name__ == "__main__":
     unittest.main()
