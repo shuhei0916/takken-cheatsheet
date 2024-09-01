@@ -2,8 +2,10 @@
 import requests, bs4
 
 
-def scrape_question():
-    return 1
+def scrape_question(soup):
+    question = "次の1から4までの記述のうち、民法の規定、判例及び下記判決文によれば、誤っているものはどれか。"
+    number = "1"
+    return question, number 
 
 def main():
     # html = 
@@ -13,6 +15,8 @@ def main():
 
     # print(res.text)
     soup = bs4.BeautifulSoup(res.text, features="html.parser")
+    
+    
     question_section = soup.find('section', class_='content mondai')
     if question_section:
         question_text = question_section.get_text(strip=True)
