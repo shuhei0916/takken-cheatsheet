@@ -1,6 +1,6 @@
 import unittest
 # from unittest.mock import MagicMock
-from takken_scraper import scrape_question, scrape_year
+from takken_scraper import scrape_question, scrape_year, scrape_category
 from bs4 import BeautifulSoup
 
 
@@ -25,8 +25,12 @@ class TestTakkenScraper(unittest.TestCase):
     def test_year_extraction(self):
         actual = scrape_year(self.soup)
         expected = "令和5年"
-        self.assertEqual(actual, expected)
+        self.assertEqual(actual, expected) 
         
+    def test_category_extraction(self):
+        subject, subtopic = scrape_category(self.soup)
+        expected = "1 - 権利関係"
+        self.assertEqual(subject, expected)
     
 if __name__ == "__main__":
     unittest.main()

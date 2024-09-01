@@ -19,6 +19,9 @@ def scrape_year(soup): # NOTE: URLから年度を取得するようにしても�
         return match.group(0)
     return None
 
+def scrape_category(soup):
+    return "1 - 権利関係", "hoge"
+
 def main():
     res = requests.get('https://takken-siken.com/kakomon/2023/01.html')
     res.raise_for_status()
