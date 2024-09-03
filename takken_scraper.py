@@ -4,6 +4,8 @@ import re
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
+def scrape_question():
+    return "1"
 
 def main():
     driver = webdriver.Chrome() 
