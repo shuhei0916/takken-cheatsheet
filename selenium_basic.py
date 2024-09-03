@@ -9,7 +9,8 @@ from tkinter import messagebox
 # Chrome Webドライバー の インスタンスを生成
 driver = webdriver.Chrome() 
 
-# WebドライバーでQiitaログインページを起動
+print(type(driver))
+
 driver.get('https://www.selenium.dev/selenium/web/web-form.html')
 
 title = driver.title
