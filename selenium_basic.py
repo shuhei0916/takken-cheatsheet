@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 
 # tkinter（メッセージボックス表示）の必要なライブラリをインポート
 import tkinter
-from tkinter import messagebox
+from tkinter import messagebox 
 
 # Chrome Webドライバー の インスタンスを生成
 driver = webdriver.Chrome() 
