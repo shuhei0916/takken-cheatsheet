@@ -12,10 +12,14 @@ def scrape_question(driver):
 def main():
     driver = webdriver.Chrome() 
 
-    driver.get('https://takken-siken.com/marubatu.php')
+    # driver.get('https://takken-siken.com/marubatu.php')
     
-    # page_source = driver.page_source
-    # print(page_source)
+    driver.get('file://sample.html')
+    print('title:', driver.title)
+    
+    
+    page_source = driver.page_source
+    print(page_source)
     
     # # JavaScriptで直接要素を取得
     # question_text = driver.execute_script("return document.querySelector('section.content').innerText;")
