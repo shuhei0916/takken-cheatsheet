@@ -9,34 +9,19 @@ def scrape_question(driver):
     question_elements = driver.find_elements(By.CSS_SELECTOR, "section.content")
     return question_elements
 
+def button_click(driver):
+    try: 
+        button = driver.find_element(By.CSS_SELECTOR, "button.submit.sendConfigform.hover[name='start']")
+        button.click()
+    except Exception as e:
+        print(f"エラーが発生しました:{e}")
+        
+
 def main():
     driver = webdriver.Chrome() 
-
-    # driver.get('https://takken-siken.com/marubatu.php')
-    
-    driver.get('file://sample.html')
-    print('title:', driver.title)
-    
-    
-    page_source = driver.page_source
-    print(page_source)
-    
-    # # JavaScriptで直接要素を取得
-    # question_text = driver.execute_script("return document.querySelector('section.content').innerText;")
-    # print(question_text)
-    
-    main_contents = driver.find_elements(By.ID, "main_contents")
-    if not main_contents:
-        print("main_contents not found")
-    for element in main_contents:
-        print(element.text)
-    
-    # question_elements = scrape_question(driver)
-    # if not question_elements:
-    #     print("要素が見つかりませんでした。")
-    # for element in question_elements:
-    #     print(element.text)
+    driver.get('https://takken-siken.com/marubatu.php')
         
+    button_click(driver)
     driver.quit()
         
 
