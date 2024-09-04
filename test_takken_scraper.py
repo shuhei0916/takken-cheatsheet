@@ -3,7 +3,7 @@ import unittest
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from takken_scraper import scrape_question, button_click
+from takken_scraper import scrape_question, button_click, scrape_year
 
 
 class TestTakkenScraper(unittest.TestCase):
@@ -22,10 +22,13 @@ class TestTakkenScraper(unittest.TestCase):
     #     expected = "制限行為能力者に関する次の記述のうち、民法の規定によれば、正しいか否かを答えよ。"
     #     self.assertEqual(question, expected)
     
-    def test_scrape_question(self):
-        question = scrape_question(self.driver)
-        self.assertIn("答えよ。", question) # おいおい、こんなテストでいいのか笑
+    # def test_scrape_question(self):
+    #     question = scrape_question(self.driver)
+    #     self.assertIn("答えよ。", question) # おいおい、こんなテストでいいのか笑
     
+    def test_scraper_year(self):
+        year = scrape_year(self)
+        self.assertEqual(year, "平成22年度試験 問1 肢3")
         
     
 if __name__ == "__main__":

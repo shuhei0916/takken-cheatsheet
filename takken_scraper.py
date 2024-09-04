@@ -4,11 +4,10 @@ import re
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-def scrape_question(driver): 
+def find_question_elements(driver): 
     # driver.implicitly_wait(10)
-    # question_elements = driver.find_elements(By.CSS_SELECTOR, "section.content")
-    
-    return "答えよ、答えよ。"
+    question_elements = driver.find_elements(By.CSS_SELECTOR, "section.content")
+    return question_elements
 
 def button_click(driver): # WARNING: button_click()は副作用があることに注意。button.clickによりページが遷移している。
     try: 
@@ -17,6 +16,11 @@ def button_click(driver): # WARNING: button_click()は副作用があること�
     except Exception as e:
         print(f"エラーが発生しました:{e}")
         
+def scrape_year(driver):
+    return "hoge"
+
+def scrape_question(driver):
+    pass
 
 def main():
     driver = webdriver.Chrome() 
@@ -24,11 +28,16 @@ def main():
         
     button_click(driver)
     
-    question_elements = scrape_question(driver)
-    if not question_elements:
-        print("question_element not found")
-    for element in question_elements:
-        print(element.text)
+    question_elements = find_question_elements(driver)
+    print(type(driver))
+    print(type(question_elements))
+    print()
+    # if not question_elements:
+    #     print("question_element not found")
+    for i, element in enumerate(question_elements):
+        # print(i, ": ", element.text)
+        print(type(element))
+        # print
         
     driver.quit()
         
