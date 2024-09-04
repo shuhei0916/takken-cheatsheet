@@ -17,7 +17,10 @@ def button_click(driver): # WARNING: button_click()は副作用があること�
         print(f"エラーが発生しました:{e}")
         
 def scrape_year(driver):
-    return "hoge"
+    gray_text = driver.find_element(By.CSS_SELECTOR, ".grayText")
+    full_text = gray_text.get_attribute("innerHTML")
+    info, ques_num = full_text.split("<br>")
+    return info
 
 def scrape_question(driver):
     pass

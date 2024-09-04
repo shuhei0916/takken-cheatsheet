@@ -1,4 +1,5 @@
 import unittest
+import re
 # from unittest.mock import MagicMock
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -27,8 +28,9 @@ class TestTakkenScraper(unittest.TestCase):
     #     self.assertIn("答えよ。", question) # おいおい、こんなテストでいいのか笑
     
     def test_scraper_year(self):
-        year = scrape_year(self)
-        self.assertEqual(year, "平成22年度試験 問1 肢3")
+        year = scrape_year(self.driver)
+        expected = r"(平成|令和)\d+年試験 問\d+ 肢\d+" # NOTE: 平成と令和のみ対応
+        self.assertRegex(year, expected)
         
     
 if __name__ == "__main__":
