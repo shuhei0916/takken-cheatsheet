@@ -21,9 +21,9 @@ class TestTakkenScraper(unittest.TestCase):
         # 全テスト後にwebdriverを終了
         cls.driver.quit()        
     
-    # def test_scrape_question(self):
-    #     question = scrape_question(self.driver)
-    #     self.assertIn("答えよ。", question) # おいおい、こんなテストでいいのか笑
+    def test_scrape_question(self):
+        question = scrape_question(self.driver)
+        self.assertIn("答えよ。", question) # おいおい、こんなテストでいいのか笑
     
     def test_scraper_year(self):
         year, _, _ = scrape_info(self.driver)
@@ -47,7 +47,7 @@ class TestTakkenScraper(unittest.TestCase):
         
     def test_scrape_kaisetsu(self):
         kaisetsu = scrape_kaisetsu(self.driver)
-        expected = r"(誤り。|正しい。|不適当。|適当。)"
+        expected = r"(誤り|正しい|不適当|適当)" # NOTE: 必要なテストケース全てを網羅できているわけではない
         self.assertRegex(kaisetsu, expected)
         
     

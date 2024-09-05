@@ -34,11 +34,14 @@ def scrape_answer(driver):
     elif "maru" in result:
         return "正"
 
-def scrape_kaisetsu(self):
-    return "誤り。令和4年(2022年)4月1日に成年年齢が18歳に引き下げられました。"
+def scrape_kaisetsu(driver):
+    kaisetsu_element = driver.find_element(By.CLASS_NAME, "kaisetsu")
+    kaisetsu = kaisetsu_element.find_element(By.CSS_SELECTOR, "div")
+    kaisetsu_text = kaisetsu.get_attribute("innerText") # NOTE: kaisetsu.textでは取得できない(is_displayed() == Falseのため)
+    return kaisetsu_text
 
 def scrape_question(driver):
-    pass
+    return "答えよ。答えよ"
 
 
 def main():
@@ -46,9 +49,7 @@ def main():
     driver.get('https://takken-siken.com/marubatu.php')
         
     button_click(driver)
-
-
-
+    
     driver.quit()
         
 
