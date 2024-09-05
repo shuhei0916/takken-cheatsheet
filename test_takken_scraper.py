@@ -29,8 +29,11 @@ class TestTakkenScraper(unittest.TestCase):
     
     def test_scraper_year(self):
         year = scrape_year(self.driver)
-        expected = r"(平成|令和)\d+年試験 問\d+ 肢\d+" # NOTE: 平成と令和のみ対応
+        expected = r"(平成|令和)\d+年試験" # NOTE: 平成と令和のみ対応
         self.assertRegex(year, expected)
+        
+    # def test_scrape_opt_num(self):
+    #      問\d+ 肢\d+
         
     
 if __name__ == "__main__":

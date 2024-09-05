@@ -20,7 +20,8 @@ def scrape_year(driver):
     gray_text = driver.find_element(By.CSS_SELECTOR, ".grayText")
     full_text = gray_text.get_attribute("innerHTML")
     info, ques_num = full_text.split("<br>")
-    return info
+    year = info.split(" ")[0]
+    return year
 
 def scrape_question(driver):
     pass
