@@ -25,7 +25,17 @@ def scrape_info(driver):
     return year, ques_num, opt_num
 
 def scrape_answer(driver):
-    return "不正解"
+    kaisetsu_element = driver.find_element(By.CLASS_NAME, "kaisetsu")
+    answer_char_element = kaisetsu_element.find_element(By.CLASS_NAME, "answerChar")    
+    result = answer_char_element.get_attribute("innerHTML")
+    
+    if "batu" in result:
+        return "誤"
+    elif "maru" in result:
+        return "正"
+
+def scrape_kaisetsu(self):
+    return "誤り。令和4年(2022年)4月1日に成年年齢が18歳に引き下げられました。"
 
 def scrape_question(driver):
     pass
@@ -36,25 +46,9 @@ def main():
     driver.get('https://takken-siken.com/marubatu.php')
         
     button_click(driver)
-    
-    question_elements = find_question_elements(driver)
-    print(type(driver))
-    print(type(question_elements))
-    
-    # # if not question_elements:
-    # #     print("question_element not found")
-    # for i, element in enumerate(question_elements):
-    #     print(i)
-    #     # print(i, ": ", element.text)
-    #     html = element.get_attribute("innerHTML")
-    #     print(html)
-    #     # print(type(element))
-    #     # print
-        
-    hoge = driver.find_element(By.CSS_SELECTOR, "section.content h3")
-    print(hoge.text)
-    # hoge.find_element()
-    
+
+
+
     driver.quit()
         
 

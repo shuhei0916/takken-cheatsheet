@@ -4,7 +4,7 @@ import re
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from takken_scraper import scrape_question, button_click, scrape_info, scrape_answer
+from takken_scraper import scrape_question, button_click, scrape_info, scrape_answer, scrape_kaisetsu
 
 
 class TestTakkenScraper(unittest.TestCase):
@@ -35,7 +35,14 @@ class TestTakkenScraper(unittest.TestCase):
         
     def test_scrape_answer(self):
         answer = scrape_answer(self.driver)
-        expected = r"(正解|不正解)"
+        expected = r"(正|誤)"
         self.assertRegex(answer, expected)
+        
+    def test_scrape_kaisetsu(self):
+        kaisetsu = scrape_kaisetsu(self.driver)
+        expected = r"(誤り。|正しい。|不適当。|適当。)"
+        self.assertRegex(kaisetsu, expected)
+        
+        
 if __name__ == "__main__":
     unittest.main()
