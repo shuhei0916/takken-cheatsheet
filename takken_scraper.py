@@ -1,4 +1,3 @@
-
 import requests, bs4
 import re
 from selenium import webdriver
@@ -40,8 +39,16 @@ def scrape_kaisetsu(driver):
     kaisetsu_text = kaisetsu.get_attribute("innerText") # NOTE: kaisetsu.textでは取得できない(is_displayed() == Falseのため)
     return kaisetsu_text
 
-def scrape_question(driver):
-    return "答えよ。答えよ"
+def scrape_option_text(driver):
+    option_element = driver.find_element(By.XPATH, "//section[@class='content']/div/b")
+    option_text = option_element.text
+    return option_text
+
+def scrape_question_text(driver):
+    question_element = driver.find_element(By.XPATH, "//section[@class='content']/div")
+    option_text = scrape_option_text(driver)
+    question_text = question_element.text.strip(option_text).strip()
+    return question_text
 
 
 def main():
