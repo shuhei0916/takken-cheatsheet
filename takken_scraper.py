@@ -51,6 +51,45 @@ def scrape_question_text(driver):
     return question_text
 
 
+def collect_and_write_questions_to_csv(driver, num_questions, filename='takken_questions.csv'):
+    # # フィールド名を定義
+    # fieldnames = ["year", "question_number", "option_number", "question_text", "option_text", "answer", "kaisetsu"]
+    
+    # # CSVファイルをオープン（書き込みモード）
+    # with open(filename, mode='w', newline='', encoding='utf-8') as file:
+    #     writer = csv.DictWriter(file, fieldnames=fieldnames)
+        
+    #     # ヘッダーを書き込む
+    #     writer.writeheader()
+        
+    #     # 各問題のデータを取得し、即座にCSVに書き込む
+    #     for i in range(num_questions):
+    #         # データをスクレイピング
+    #         year, ques_num, opt_num = extract_question_info(driver)
+    #         question_text = scrape_question_text(driver)
+    #         option_text = scrape_option_text(driver)
+    #         answer = scrape_answer(driver)
+    #         kaisetsu = scrape_kaisetsu(driver)
+            
+    #         # データを辞書形式にする
+    #         question_data = {
+    #             "year": year,
+    #             "question_number": ques_num,
+    #             "option_number": opt_num,
+    #             "question_text": question_text,
+    #             "option_text": option_text,
+    #             "answer": answer,
+    #             "kaisetsu": kaisetsu
+    #         }
+            
+    #         # データを即座にCSVに書き込む
+    #         writer.writerow(question_data)
+
+    #         # 次の問題に進むための処理（ボタンをクリックするなど）
+    #         # button_click(driver) など、次の問題に遷移するためのコードを追加
+    pass
+
+
 def main():
     driver = webdriver.Chrome() 
     driver.get('https://takken-siken.com/marubatu.php')

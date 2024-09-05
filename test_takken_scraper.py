@@ -8,11 +8,10 @@ TODO: 問題文等は画面をリロードすると内容が毎回変わるの�
 
 import unittest
 import re
-# from unittest.mock import MagicMock
-from bs4 import BeautifulSoup
+from unittest.mock import mock_open, patch, MagicMock
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from takken_scraper import button_click, scrape_info, scrape_answer, scrape_kaisetsu, scrape_option_text, scrape_question_text
+from takken_scraper import button_click, scrape_info, scrape_answer, scrape_kaisetsu, scrape_option_text, scrape_question_text, collect_and_write_questions_to_csv
 
 
 class TestTakkenScraper(unittest.TestCase):
@@ -59,9 +58,36 @@ class TestTakkenScraper(unittest.TestCase):
         
     def test_scrape_kaisetsu(self):
         kaisetsu = scrape_kaisetsu(self.driver)
-        expected = r"(誤り|正しい|不適当|適当)" # NOTE: 必要なテストケース全てを網羅できているわけではない
+        expected = r"(誤り|正しい|不適当|適当|違反する|違反しない)" # NOTE: 必要なテストケース全てを網羅できているわけではない
         self.assertRegex(kaisetsu, expected)
-              
+
+
+class TestCSVWriter(unittest.TestCase):
+    def setUp(self):
+        self.sample_data = [
+            {
+                "year": "令和3年",
+                "question_number": "問1",
+                "option_number": "肢1",
+                "question_text": "次の文は…",
+                "option_text": "1. 選択肢1",
+                "answer": "正",
+                "kaisetsu": "この解説は…"
+            }
+        ]
         
+    @patch('builtins.open', new_callable=mock_open)
+    def test_csv_header(self, mock_file):
+        # ダミーのドライバを使ってテスト
+        driver = None
+        
+        collect_and_write_questions_to_csv(driver, num_questions=1, filename="dummy.csv")
+
+        # 書き込まれた内容を確認
+        mock_file.assert_called_once_with('dummy.csv', mode='w', newline='', encoding='utf-8')
+        handle = mock_file()
+        handle.write.assert_any_call("year,question_number,option_number,question_text,option_text,answer,kaisetsu\n")
+
+
 if __name__ == "__main__":
     unittest.main()
