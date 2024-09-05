@@ -23,6 +23,12 @@ def scrape_year(driver):
     year = info.split(" ")[0]
     return year
 
+def scrape_ques_num(driver):
+    return "問1"
+
+def scrape_opt_num(driver):
+    return "hoge"
+
 def scrape_question(driver):
     pass
 

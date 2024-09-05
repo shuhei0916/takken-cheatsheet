@@ -4,7 +4,7 @@ import re
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from takken_scraper import scrape_question, button_click, scrape_year
+from takken_scraper import scrape_question, button_click, scrape_year, scrape_ques_num, scrape_opt_num
 
 
 class TestTakkenScraper(unittest.TestCase):
@@ -32,9 +32,13 @@ class TestTakkenScraper(unittest.TestCase):
         expected = r"(平成|令和)\d+年試験" # NOTE: 平成と令和のみ対応
         self.assertRegex(year, expected)
         
-    # def test_scrape_opt_num(self):
-    #      問\d+ 肢\d+
+    def test_scrape_ques_num(self):
+        opt_num = scrape_ques_num(self.driver)
+        expected = r"問\d+"
+        self.assertRegex(opt_num, expected)
         
+    # def test_scrape_opt_num(self):
+        # 肢\d+
     
 if __name__ == "__main__":
     unittest.main()
