@@ -23,8 +23,21 @@ def scrape_year(driver):
     year = info.split(" ")[0]
     return year
 
+def scrape_info(driver):
+    gray_text = driver.find_element(By.CSS_SELECTOR, ".grayText")
+    full_text = gray_text.get_attribute("innerHTML")
+    info, ques_num = full_text.split("<br>")
+    year, ques_num, opt_num = info.split(" ")
+    return year, ques_num, opt_num
+
+    
 def scrape_ques_num(driver):
-    return "問1"
+    gray_text = driver.find_element(By.CSS_SELECTOR, ".grayText")
+    full_text = gray_text.get_attribute("innerHTML")
+    info, ques_num = full_text.split("<br>")
+    ques_num = info.split(" ")[1]
+
+    return ques_num
 
 def scrape_opt_num(driver):
     return "hoge"
