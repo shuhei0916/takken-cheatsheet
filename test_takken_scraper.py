@@ -8,11 +8,18 @@ from takken_scraper import scrape_question, button_click, scrape_info, scrape_an
 
 
 class TestTakkenScraper(unittest.TestCase):
-    def setUp(self):
-        self.driver = webdriver.Chrome() 
-        self.driver.get('https://takken-siken.com/marubatu.php')
+    @classmethod
+    def setUpClass(cls):
+        # クラス全体で一回だけwebdriverを初期化(setupメソッドは各テストメソッドの前に呼ばれる)
+        cls.driver = webdriver.Chrome()
+        cls.driver.get('https://takken-siken.com/marubatu.php')
         
-        button_click(self.driver)
+        button_click(cls.driver)
+        
+    @classmethod
+    def tearDownClass(cls):
+        # 全テスト後にwebdriverを終了
+        cls.driver.quit()        
     
     # def test_scrape_question(self):
     #     question = scrape_question(self.driver)
@@ -42,6 +49,8 @@ class TestTakkenScraper(unittest.TestCase):
         kaisetsu = scrape_kaisetsu(self.driver)
         expected = r"(誤り。|正しい。|不適当。|適当。)"
         self.assertRegex(kaisetsu, expected)
+        
+    
         
         
 if __name__ == "__main__":
