@@ -2,6 +2,7 @@ import requests, bs4
 import re
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+import csv
 
 def button_click(driver): # WARNING: button_click()は副作用があることに注意。button.clickによりページが遷移している。
     try: 
@@ -52,15 +53,15 @@ def scrape_question_text(driver):
 
 
 def collect_and_write_questions_to_csv(driver, num_questions, filename='takken_questions.csv'):
-    # # フィールド名を定義
-    # fieldnames = ["year", "question_number", "option_number", "question_text", "option_text", "answer", "kaisetsu"]
+    # フィールド名を定義
+    fieldnames = ["year", "question_number", "option_number", "question_text", "option_text", "answer", "kaisetsu"]
     
-    # # CSVファイルをオープン（書き込みモード）
-    # with open(filename, mode='w', newline='', encoding='utf-8') as file:
-    #     writer = csv.DictWriter(file, fieldnames=fieldnames)
+    # CSVファイルをオープン（書き込みモード）
+    with open(filename, mode='w', newline='', encoding='utf-8') as file:
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
         
-    #     # ヘッダーを書き込む
-    #     writer.writeheader()
+        # ヘッダーを書き込む
+        writer.writeheader()
         
     #     # 各問題のデータを取得し、即座にCSVに書き込む
     #     for i in range(num_questions):
@@ -87,16 +88,18 @@ def collect_and_write_questions_to_csv(driver, num_questions, filename='takken_q
 
     #         # 次の問題に進むための処理（ボタンをクリックするなど）
     #         # button_click(driver) など、次の問題に遷移するためのコードを追加
-    pass
 
 
 def main():
-    driver = webdriver.Chrome() 
-    driver.get('https://takken-siken.com/marubatu.php')
+    # driver = webdriver.Chrome() 
+    # driver.get('https://takken-siken.com/marubatu.php')
         
-    button_click(driver)
+    # button_click(driver)
     
-    driver.quit()
+    # driver.quit()
+    
+    collect_and_write_questions_to_csv("hoge", "hoge", filename="./data/sample.csv")
+    
         
 
 if __name__ == "__main__":
