@@ -4,23 +4,26 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import csv
 
-def start_button_click(driver): # WARNING: start_button_click()は副作用があることに注意。button.clickによりページが遷移している。
+def click_start_button(driver): # WARNING: click_start_button()は副作用があることに注意。button.clickによりページが遷移している。
     try: 
         button = driver.find_element(By.CSS_SELECTOR, "button.submit.sendConfigform.hover[name='start']")
         button.click()
     except Exception as e:
         print(f"エラーが発生しました:{e}")
 
-def next_button_click(driver):
-    next_button = driver.find_element(By.CSS_SELECTOR, 'button[data-text="NEXT"]')
-    next_button.click()
+def click_next_button(driver):
+    try: 
+        next_button = driver.find_element(By.CSS_SELECTOR, 'button[data-text="NEXT"]')
+        next_button.click()
+    except Exception as e:
+        print(f"エラーが発生しました:{e}")
 
-def find_question_elements(driver): 
+def get_question_elements(driver): 
     # driver.implicitly_wait(10)
     question_elements = driver.find_elements(By.CSS_SELECTOR, "section.content")
     return question_elements
 
-def scrape_info(driver):
+def scrape_question_info(driver):
     gray_text = driver.find_element(By.CSS_SELECTOR, ".grayText")
     full_text = gray_text.get_attribute("innerHTML")
     info, ques_num = full_text.split("<br>")
@@ -28,7 +31,7 @@ def scrape_info(driver):
     year, ques_num, opt_num = info.split(" ")
     return year, ques_num, opt_num
 
-def scrape_answer(driver):
+def scrape_correct_answer(driver):
     kaisetsu_element = driver.find_element(By.CLASS_NAME, "kaisetsu")
     answer_char_element = kaisetsu_element.find_element(By.CLASS_NAME, "answerChar")    
     result = answer_char_element.get_attribute("innerHTML")
@@ -38,7 +41,7 @@ def scrape_answer(driver):
     elif "maru" in result:
         return "正"
 
-def scrape_kaisetsu(driver):
+def scrape_explanation(driver):
     kaisetsu_element = driver.find_element(By.CLASS_NAME, "kaisetsu")
     kaisetsu = kaisetsu_element.find_element(By.CSS_SELECTOR, "div")
     kaisetsu_text = kaisetsu.get_attribute("innerText") # NOTE: kaisetsu.textでは取得できない(is_displayed() == Falseのため)
@@ -56,59 +59,49 @@ def scrape_question_text(driver):
     return question_text
 
 
-def collect_scraping_data(driver):
-        #     # 各問題のデータを取得し、即座にCSVに書き込む
-    #     for i in range(num_questions):
-    #         # データをスクレイピング
-    #         year, ques_num, opt_num = extract_question_info(driver)
-    #         question_text = scrape_question_text(driver)
-    #         option_text = scrape_option_text(driver)
-    #         answer = scrape_answer(driver)
-    #         kaisetsu = scrape_kaisetsu(driver)
-            
-    #         # データを辞書形式にする
-    #         question_data = {
-    #             "year": year,
-    #             "question_number": ques_num,
-    #             "option_number": opt_num,
-    #             "question_text": question_text,
-    #             "option_text": option_text,
-    #             "answer": answer,
-    #             "kaisetsu": kaisetsu
-    #         }
-            
-    #         # データを即座にCSVに書き込む
-    #         writer.writerow(question_data)
-    pass
+def collect_question_data(driver):
+    year, ques_num, opt_num = scrape_question_info(driver)
+    question_text = scrape_question_text(driver)
+    option_text = scrape_option_text(driver)
+    answer = scrape_correct_answer(driver)
+    kaisetsu = scrape_explanation(driver)
+    
+    question_data = {
+        "year": year,
+        "question_number": ques_num,
+        "option_number": opt_num,
+        "question_text": question_text,
+        "option_text": option_text,
+        "answer": answer,
+        "kaisetsu": kaisetsu
+    }
+    return question_data
 
 def write_data_to_csv(driver, num_questions, filename='takken_questions.csv'):
-    # フィールド名を定義
     fieldnames = ["year", "question_number", "option_number", "question_text", "option_text", "answer", "kaisetsu"]
     
-    # CSVファイルをオープン（書き込みモード）
-    with open(filename, mode='w', newline='', encoding='utf-8') as file:
+    with open(filename, mode='w', newline='', encoding='utf-8-sig') as file: # windows環境ではnewline=''としておくと安全らしい
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         
-        # ヘッダーを書き込む
         writer.writeheader()
-        
-
-
-        # 次の問題に進むための処理（ボタンをクリックするなど）
-        # button_click(driver) など、次の問題に遷移するためのコードを追加
+        for i in range(num_questions):
+            data_dic = collect_question_data(driver)
+            writer.writerow(data_dic) 
+            
+            click_next_button(driver)
 
 
 def main():
-    # driver = webdriver.Chrome() 
-    # driver.get('https://takken-siken.com/marubatu.php')
+    driver = webdriver.Chrome() 
+    driver.implicitly_wait(5)
+    driver.get('https://takken-siken.com/marubatu.php')
         
-    # start_button_click(driver)
+    click_start_button(driver)
     
-    # driver.quit()
+    write_data_to_csv(driver, num_questions=20, filename="./data/sample.csv")
     
-    write_data_to_csv("hoge", "hoge", filename="./data/sample.csv")
+    driver.quit()
     
         
-
 if __name__ == "__main__":
     main()
