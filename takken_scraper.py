@@ -4,12 +4,16 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import csv
 
-def button_click(driver): # WARNING: button_click()は副作用があることに注意。button.clickによりページが遷移している。
+def start_button_click(driver): # WARNING: start_button_click()は副作用があることに注意。button.clickによりページが遷移している。
     try: 
         button = driver.find_element(By.CSS_SELECTOR, "button.submit.sendConfigform.hover[name='start']")
         button.click()
     except Exception as e:
         print(f"エラーが発生しました:{e}")
+
+def next_button_click(driver):
+    next_button = driver.find_element(By.CSS_SELECTOR, 'button[data-text="NEXT"]')
+    next_button.click()
 
 def find_question_elements(driver): 
     # driver.implicitly_wait(10)
@@ -52,18 +56,8 @@ def scrape_question_text(driver):
     return question_text
 
 
-def collect_and_write_questions_to_csv(driver, num_questions, filename='takken_questions.csv'):
-    # フィールド名を定義
-    fieldnames = ["year", "question_number", "option_number", "question_text", "option_text", "answer", "kaisetsu"]
-    
-    # CSVファイルをオープン（書き込みモード）
-    with open(filename, mode='w', newline='', encoding='utf-8') as file:
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
-        
-        # ヘッダーを書き込む
-        writer.writeheader()
-        
-    #     # 各問題のデータを取得し、即座にCSVに書き込む
+def collect_scraping_data(driver):
+        #     # 各問題のデータを取得し、即座にCSVに書き込む
     #     for i in range(num_questions):
     #         # データをスクレイピング
     #         year, ques_num, opt_num = extract_question_info(driver)
@@ -85,20 +79,34 @@ def collect_and_write_questions_to_csv(driver, num_questions, filename='takken_q
             
     #         # データを即座にCSVに書き込む
     #         writer.writerow(question_data)
+    pass
 
-    #         # 次の問題に進むための処理（ボタンをクリックするなど）
-    #         # button_click(driver) など、次の問題に遷移するためのコードを追加
+def write_data_to_csv(driver, num_questions, filename='takken_questions.csv'):
+    # フィールド名を定義
+    fieldnames = ["year", "question_number", "option_number", "question_text", "option_text", "answer", "kaisetsu"]
+    
+    # CSVファイルをオープン（書き込みモード）
+    with open(filename, mode='w', newline='', encoding='utf-8') as file:
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        
+        # ヘッダーを書き込む
+        writer.writeheader()
+        
+
+
+        # 次の問題に進むための処理（ボタンをクリックするなど）
+        # button_click(driver) など、次の問題に遷移するためのコードを追加
 
 
 def main():
     # driver = webdriver.Chrome() 
     # driver.get('https://takken-siken.com/marubatu.php')
         
-    # button_click(driver)
+    # start_button_click(driver)
     
     # driver.quit()
     
-    collect_and_write_questions_to_csv("hoge", "hoge", filename="./data/sample.csv")
+    write_data_to_csv("hoge", "hoge", filename="./data/sample.csv")
     
         
 
