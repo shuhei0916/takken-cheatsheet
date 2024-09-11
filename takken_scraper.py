@@ -1,8 +1,13 @@
 import requests, bs4
 import re
 from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import csv
+import logging
+
+logging.basicConfig(filename='log_takken_scraper.txt', filemode='w', level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - %(message)s')
 
 def click_start_button(driver): # WARNING: click_start_button()は副作用があることに注意。button.clickによりページが遷移している。
     try: 
@@ -13,13 +18,16 @@ def click_start_button(driver): # WARNING: click_start_button()は副作用が�
 
 def click_next_button(driver):
     try: 
-        next_button = driver.find_element(By.CSS_SELECTOR, 'button[data-text="NEXT"]')
+        next_button = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.submit.sendConfigform.hover'))
+        )
+        # print('next_button.text: ', next_button.text)
+        logging.debug('next_button.text: %s', next_button.text) # NOTE: これでいいの？
         next_button.click()
     except Exception as e:
         print(f"エラーが発生しました:{e}")
 
 def get_question_elements(driver): 
-    # driver.implicitly_wait(10)
     question_elements = driver.find_elements(By.CSS_SELECTOR, "section.content")
     return question_elements
 
@@ -85,6 +93,8 @@ def write_data_to_csv(driver, num_questions, filename='takken_questions.csv'):
         
         writer.writeheader()
         for i in range(num_questions):
+            # print(driver.title)
+            logging.debug(f'{i = }, {driver.title = }')
             data_dic = collect_question_data(driver)
             writer.writerow(data_dic) 
             
@@ -93,7 +103,7 @@ def write_data_to_csv(driver, num_questions, filename='takken_questions.csv'):
 
 def main():
     driver = webdriver.Chrome() 
-    driver.implicitly_wait(5)
+    driver.implicitly_wait(10)
     driver.get('https://takken-siken.com/marubatu.php')
         
     click_start_button(driver)

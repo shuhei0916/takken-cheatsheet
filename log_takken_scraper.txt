@@ -1,0 +1,213 @@
+ 2024-09-11 14:10:47,331 - DEBUG - Selenium Manager binary found at: /home/shuhei0916/projects/takken-cheatsheet/.venv/lib/python3.10/site-packages/selenium/webdriver/common/linux/selenium-manager
+ 2024-09-11 14:10:47,331 - DEBUG - Executing process: /home/shuhei0916/projects/takken-cheatsheet/.venv/lib/python3.10/site-packages/selenium/webdriver/common/linux/selenium-manager --browser chrome --debug --language-binding python --output json
+ 2024-09-11 14:10:47,571 - DEBUG - chromedriver not found in PATH
+ 2024-09-11 14:10:47,571 - DEBUG - chrome not found in PATH
+ 2024-09-11 14:10:47,571 - DEBUG - chrome not found in the system
+ 2024-09-11 14:10:47,571 - DEBUG - Required browser: chrome 128.0.6613.137
+ 2024-09-11 14:10:47,571 - DEBUG - chrome 128.0.6613.137 already exists
+ 2024-09-11 14:10:47,571 - DEBUG - chrome 128.0.6613.137 is available at /home/shuhei0916/.cache/selenium/chrome/linux64/128.0.6613.137/chrome
+ 2024-09-11 14:10:47,571 - DEBUG - Required driver: chromedriver 128.0.6613.137
+ 2024-09-11 14:10:47,571 - DEBUG - chromedriver 128.0.6613.137 already in the cache
+ 2024-09-11 14:10:47,571 - DEBUG - Driver path: /home/shuhei0916/.cache/selenium/chromedriver/linux64/128.0.6613.137/chromedriver
+ 2024-09-11 14:10:47,571 - DEBUG - Browser path: /home/shuhei0916/.cache/selenium/chrome/linux64/128.0.6613.137/chrome
+ 2024-09-11 14:10:47,572 - DEBUG - Started executable: `/home/shuhei0916/.cache/selenium/chromedriver/linux64/128.0.6613.137/chromedriver` in a child process with pid: 684885 using 0 to output -3
+ 2024-09-11 14:10:47,583 - DEBUG - POST http://localhost:46099/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'browserVersion': None, 'goog:chromeOptions': {'extensions': [], 'binary': '/home/shuhei0916/.cache/selenium/chrome/linux64/128.0.6613.137/chrome', 'args': []}}}}
+ 2024-09-11 14:10:47,583 - DEBUG - Starting new HTTP connection (1): localhost:46099
+ 2024-09-11 14:10:47,989 - DEBUG - http://localhost:46099 "POST /session HTTP/11" 200 0
+ 2024-09-11 14:10:47,989 - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome","browserVersion":"128.0.6613.137","chrome":{"chromedriverVersion":"128.0.6613.137 (fe621c5aa2d6b987e964fb1b5066833da5fb613d-refs/branch-heads/6613@{#1711})","userDataDir":"/tmp/.org.chromium.Chromium.HToOPQ"},"fedcm:accounts":true,"goog:chromeOptions":{"debuggerAddress":"localhost:32899"},"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"linux","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:extension:minPinLength":true,"webauthn:extension:prf":true,"webauthn:virtualAuthenticators":true},"sessionId":"3ef371e0dfa0d306be615b6fc7b11a8b"}} | headers=HTTPHeaderDict({'Content-Length': '850', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:47,989 - DEBUG - Finished Request
+ 2024-09-11 14:10:47,990 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/timeouts {'implicit': 10000}
+ 2024-09-11 14:10:47,991 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/timeouts HTTP/11" 200 0
+ 2024-09-11 14:10:47,991 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:47,991 - DEBUG - Finished Request
+ 2024-09-11 14:10:47,991 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/url {'url': 'https://takken-siken.com/marubatu.php'}
+ 2024-09-11 14:10:49,857 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/url HTTP/11" 200 0
+ 2024-09-11 14:10:49,857 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:49,857 - DEBUG - Finished Request
+ 2024-09-11 14:10:49,857 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element {'using': 'css selector', 'value': "button.submit.sendConfigform.hover[name='start']"}
+ 2024-09-11 14:10:49,884 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element HTTP/11" 200 0
+ 2024-09-11 14:10:49,884 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.8AAEFCE0A0B92739E704E80835314B74.d.47958236DF8BE79D76C80A7D81127298.e.130"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:49,885 - DEBUG - Finished Request
+ 2024-09-11 14:10:49,885 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.47958236DF8BE79D76C80A7D81127298.e.130/click {}
+ 2024-09-11 14:10:51,479 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.47958236DF8BE79D76C80A7D81127298.e.130/click HTTP/11" 200 0
+ 2024-09-11 14:10:51,479 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,479 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,480 - DEBUG - GET http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/title {}
+ 2024-09-11 14:10:51,485 - DEBUG - http://localhost:46099 "GET /session/3ef371e0dfa0d306be615b6fc7b11a8b/title HTTP/11" 200 0
+ 2024-09-11 14:10:51,485 - DEBUG - Remote response: status=200 | data={"value":"宅建士 一問一答道場🥋｜宅建試験ドットコム"} | headers=HTTPHeaderDict({'Content-Length': '74', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,485 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,486 - DEBUG - i = 0, driver.title = '宅建士 一問一答道場🥋｜宅建試験ドットコム'
+ 2024-09-11 14:10:51,486 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element {'using': 'css selector', 'value': '.grayText'}
+ 2024-09-11 14:10:51,497 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element HTTP/11" 200 0
+ 2024-09-11 14:10:51,497 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.275"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,497 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,497 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.275'}, 'innerHTML']}
+ 2024-09-11 14:10:51,505 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/execute/sync HTTP/11" 200 0
+ 2024-09-11 14:10:51,505 - DEBUG - Remote response: status=200 | data={"value":"平成12年試験 問1 肢1\u003Cbr>1問目／選択問題数4480問"} | headers=HTTPHeaderDict({'Content-Length': '80', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,505 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,505 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element {'using': 'xpath', 'value': "//section[@class='content']/div"}
+ 2024-09-11 14:10:51,517 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element HTTP/11" 200 0
+ 2024-09-11 14:10:51,517 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.277"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,518 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,518 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element {'using': 'xpath', 'value': "//section[@class='content']/div/b"}
+ 2024-09-11 14:10:51,530 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element HTTP/11" 200 0
+ 2024-09-11 14:10:51,530 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.278"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,530 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,530 - DEBUG - GET http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.278/text {}
+ 2024-09-11 14:10:51,544 - DEBUG - http://localhost:46099 "GET /session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.278/text HTTP/11" 200 0
+ 2024-09-11 14:10:51,545 - DEBUG - Remote response: status=200 | data={"value":"Bが未成年者であるとき、Bは、Aの代理人になることができない。"} | headers=HTTPHeaderDict({'Content-Length': '99', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,545 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,545 - DEBUG - GET http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.277/text {}
+ 2024-09-11 14:10:51,553 - DEBUG - http://localhost:46099 "GET /session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.277/text HTTP/11" 200 0
+ 2024-09-11 14:10:51,554 - DEBUG - Remote response: status=200 | data={"value":"Aが、Bに代理権を授与してA所有の土地を売却する場合に関する次の記述のうち、民法の規定及び判例によれば、正しいか否かを答えよ。\n\nBが未成年者であるとき、Bは、Aの代理人になることができない。"} | headers=HTTPHeaderDict({'Content-Length': '286', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,554 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,554 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element {'using': 'xpath', 'value': "//section[@class='content']/div/b"}
+ 2024-09-11 14:10:51,561 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element HTTP/11" 200 0
+ 2024-09-11 14:10:51,562 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.278"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,562 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,562 - DEBUG - GET http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.278/text {}
+ 2024-09-11 14:10:51,571 - DEBUG - http://localhost:46099 "GET /session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.278/text HTTP/11" 200 0
+ 2024-09-11 14:10:51,571 - DEBUG - Remote response: status=200 | data={"value":"Bが未成年者であるとき、Bは、Aの代理人になることができない。"} | headers=HTTPHeaderDict({'Content-Length': '99', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,571 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,571 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element {'using': 'css selector', 'value': '.kaisetsu'}
+ 2024-09-11 14:10:51,581 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element HTTP/11" 200 0
+ 2024-09-11 14:10:51,581 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.279"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,582 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,582 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.279/element {'using': 'css selector', 'value': '.answerChar'}
+ 2024-09-11 14:10:51,594 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.279/element HTTP/11" 200 0
+ 2024-09-11 14:10:51,594 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.280"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,594 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,595 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.280'}, 'innerHTML']}
+ 2024-09-11 14:10:51,603 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/execute/sync HTTP/11" 200 0
+ 2024-09-11 14:10:51,603 - DEBUG - Remote response: status=200 | data={"value":"\u003Ci class=\"batu\">\u003C/i>"} | headers=HTTPHeaderDict({'Content-Length': '44', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,603 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,603 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element {'using': 'css selector', 'value': '.kaisetsu'}
+ 2024-09-11 14:10:51,612 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element HTTP/11" 200 0
+ 2024-09-11 14:10:51,613 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.279"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,613 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,613 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.279/element {'using': 'css selector', 'value': 'div'}
+ 2024-09-11 14:10:51,625 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.279/element HTTP/11" 200 0
+ 2024-09-11 14:10:51,626 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.281"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,626 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,626 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.281'}, 'innerText']}
+ 2024-09-11 14:10:51,636 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/execute/sync HTTP/11" 200 0
+ 2024-09-11 14:10:51,636 - DEBUG - Remote response: status=200 | data={"value":"誤り。未成年者等の制限行為能力者であっても代理人になることはできます。民法102条では、制限行為能力者の代理行為は取り消すことができないこととし、制限行為能力者が代理人となれることを暗に示しています（民法102条）。※旧民法102条では「代理人は、行為能力者であることを要しない」と明文化されていました。この規定は上記の条文として引き継がれています。制限行為能力者が代理人としてした行為は、行為能力の制限によっては取り消すことができない。ただし、制限行為能力者が他の制限行為能力者の法定代理人としてした行為については、この限りでない。"} | headers=HTTPHeaderDict({'Content-Length': '795', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,636 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,636 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element {'using': 'css selector', 'value': 'button.submit.sendConfigform.hover'}
+ 2024-09-11 14:10:51,647 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element HTTP/11" 200 0
+ 2024-09-11 14:10:51,648 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.282"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,648 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,648 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/execute/sync {'script': '/* isDisplayed */return (function(){return (function(){var g=this||self;\nfunction aa(a){var b=typeof...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.282'}]}
+ 2024-09-11 14:10:51,660 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/execute/sync HTTP/11" 200 0
+ 2024-09-11 14:10:51,660 - DEBUG - Remote response: status=200 | data={"value":true} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,660 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,661 - DEBUG - GET http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.282/enabled {}
+ 2024-09-11 14:10:51,672 - DEBUG - http://localhost:46099 "GET /session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.282/enabled HTTP/11" 200 0
+ 2024-09-11 14:10:51,672 - DEBUG - Remote response: status=200 | data={"value":true} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,673 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,673 - DEBUG - GET http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.282/text {}
+ 2024-09-11 14:10:51,717 - DEBUG - http://localhost:46099 "GET /session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.282/text HTTP/11" 200 0
+ 2024-09-11 14:10:51,717 - DEBUG - Remote response: status=200 | data={"value":"次の問題"} | headers=HTTPHeaderDict({'Content-Length': '24', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,717 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,717 - DEBUG - GET http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.282/text {}
+ 2024-09-11 14:10:51,729 - DEBUG - http://localhost:46099 "GET /session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.282/text HTTP/11" 200 0
+ 2024-09-11 14:10:51,729 - DEBUG - Remote response: status=200 | data={"value":"次の問題"} | headers=HTTPHeaderDict({'Content-Length': '24', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:51,729 - DEBUG - Finished Request
+ 2024-09-11 14:10:51,731 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.282/click {}
+ 2024-09-11 14:10:53,441 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.ADEA7906756D9C8F43C847725D089FA5.e.282/click HTTP/11" 200 0
+ 2024-09-11 14:10:53,441 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,441 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,441 - DEBUG - GET http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/title {}
+ 2024-09-11 14:10:53,447 - DEBUG - http://localhost:46099 "GET /session/3ef371e0dfa0d306be615b6fc7b11a8b/title HTTP/11" 200 0
+ 2024-09-11 14:10:53,448 - DEBUG - Remote response: status=200 | data={"value":"宅建士 一問一答道場🥋｜宅建試験ドットコム"} | headers=HTTPHeaderDict({'Content-Length': '74', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,448 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,448 - DEBUG - i = 1, driver.title = '宅建士 一問一答道場🥋｜宅建試験ドットコム'
+ 2024-09-11 14:10:53,448 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element {'using': 'css selector', 'value': '.grayText'}
+ 2024-09-11 14:10:53,456 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element HTTP/11" 200 0
+ 2024-09-11 14:10:53,456 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.404"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,456 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,457 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.404'}, 'innerHTML']}
+ 2024-09-11 14:10:53,464 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/execute/sync HTTP/11" 200 0
+ 2024-09-11 14:10:53,464 - DEBUG - Remote response: status=200 | data={"value":"平成13年試験 問47 肢1\u003Cbr>2問目／選択問題数4480問"} | headers=HTTPHeaderDict({'Content-Length': '81', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,464 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,465 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element {'using': 'xpath', 'value': "//section[@class='content']/div"}
+ 2024-09-11 14:10:53,473 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element HTTP/11" 200 0
+ 2024-09-11 14:10:53,473 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.425"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,473 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,473 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element {'using': 'xpath', 'value': "//section[@class='content']/div/b"}
+ 2024-09-11 14:10:53,483 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element HTTP/11" 200 0
+ 2024-09-11 14:10:53,483 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.427"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,483 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,484 - DEBUG - GET http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.427/text {}
+ 2024-09-11 14:10:53,494 - DEBUG - http://localhost:46099 "GET /session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.427/text HTTP/11" 200 0
+ 2024-09-11 14:10:53,495 - DEBUG - Remote response: status=200 | data={"value":"Aは、建物の売買の媒介を依頼されたところ、当該建物は工事完成後10カ月が経過しているものの未使用であったので、当該物件を新築物件として販売広告してもよい。"} | headers=HTTPHeaderDict({'Content-Length': '237', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,495 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,495 - DEBUG - GET http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.425/text {}
+ 2024-09-11 14:10:53,574 - DEBUG - http://localhost:46099 "GET /session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.425/text HTTP/11" 200 0
+ 2024-09-11 14:10:53,574 - DEBUG - Remote response: status=200 | data={"value":"宅地建物取引業者Aが行う広告に関する次の記述のうち、不当景品類及び不当表示防止法（不動産の表示に関する公正競争規約を含む。）の規定によれば、正しいか否かを答えよ。\n\nAは、建物の売買の媒介を依頼されたところ、当該建物は工事完成後10カ月が経過しているものの未使用であったので、当該物件を新築物件として販売広告してもよい。"} | headers=HTTPHeaderDict({'Content-Length': '482', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,574 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,574 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element {'using': 'xpath', 'value': "//section[@class='content']/div/b"}
+ 2024-09-11 14:10:53,585 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element HTTP/11" 200 0
+ 2024-09-11 14:10:53,586 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.427"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,586 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,586 - DEBUG - GET http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.427/text {}
+ 2024-09-11 14:10:53,596 - DEBUG - http://localhost:46099 "GET /session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.427/text HTTP/11" 200 0
+ 2024-09-11 14:10:53,597 - DEBUG - Remote response: status=200 | data={"value":"Aは、建物の売買の媒介を依頼されたところ、当該建物は工事完成後10カ月が経過しているものの未使用であったので、当該物件を新築物件として販売広告してもよい。"} | headers=HTTPHeaderDict({'Content-Length': '237', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,597 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,597 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element {'using': 'css selector', 'value': '.kaisetsu'}
+ 2024-09-11 14:10:53,605 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element HTTP/11" 200 0
+ 2024-09-11 14:10:53,605 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.428"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,605 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,605 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.428/element {'using': 'css selector', 'value': '.answerChar'}
+ 2024-09-11 14:10:53,616 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.428/element HTTP/11" 200 0
+ 2024-09-11 14:10:53,616 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.429"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,617 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,617 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.429'}, 'innerHTML']}
+ 2024-09-11 14:10:53,625 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/execute/sync HTTP/11" 200 0
+ 2024-09-11 14:10:53,625 - DEBUG - Remote response: status=200 | data={"value":"\u003Ci class=\"maru\">\u003C/i>"} | headers=HTTPHeaderDict({'Content-Length': '44', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,625 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,625 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element {'using': 'css selector', 'value': '.kaisetsu'}
+ 2024-09-11 14:10:53,636 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element HTTP/11" 200 0
+ 2024-09-11 14:10:53,636 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.428"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,636 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,636 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.428/element {'using': 'css selector', 'value': 'div'}
+ 2024-09-11 14:10:53,647 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.428/element HTTP/11" 200 0
+ 2024-09-11 14:10:53,647 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.430"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,647 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,647 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/execute/sync {'script': '/* getAttribute */return (function(){return (function(){var d=this||self;function f(a,b){function c(...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.430'}, 'innerText']}
+ 2024-09-11 14:10:53,654 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/execute/sync HTTP/11" 200 0
+ 2024-09-11 14:10:53,654 - DEBUG - Remote response: status=200 | data={"value":"[正しい]。「新築」と表示するには、その物件が、建築完了後1年未満であって、居住の用に供されたことがないという意味で用いる必要があります。本肢の建物は、未使用かつ工事完成後10か月ですので、新築として表示することができます（表示規約18条1項(1)）。新築　建築工事完了後1年未満であって、居住の用に供されたことがないものをいう。"} | headers=HTTPHeaderDict({'Content-Length': '483', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,654 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,654 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element {'using': 'css selector', 'value': 'button.submit.sendConfigform.hover'}
+ 2024-09-11 14:10:53,663 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element HTTP/11" 200 0
+ 2024-09-11 14:10:53,663 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.431"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,663 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,663 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/execute/sync {'script': '/* isDisplayed */return (function(){return (function(){var g=this||self;\nfunction aa(a){var b=typeof...', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.431'}]}
+ 2024-09-11 14:10:53,672 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/execute/sync HTTP/11" 200 0
+ 2024-09-11 14:10:53,673 - DEBUG - Remote response: status=200 | data={"value":true} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,673 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,673 - DEBUG - GET http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.431/enabled {}
+ 2024-09-11 14:10:53,683 - DEBUG - http://localhost:46099 "GET /session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.431/enabled HTTP/11" 200 0
+ 2024-09-11 14:10:53,684 - DEBUG - Remote response: status=200 | data={"value":true} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,684 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,684 - DEBUG - GET http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.431/text {}
+ 2024-09-11 14:10:53,694 - DEBUG - http://localhost:46099 "GET /session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.431/text HTTP/11" 200 0
+ 2024-09-11 14:10:53,694 - DEBUG - Remote response: status=200 | data={"value":"次の問題"} | headers=HTTPHeaderDict({'Content-Length': '24', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,695 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,695 - DEBUG - GET http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.431/text {}
+ 2024-09-11 14:10:53,704 - DEBUG - http://localhost:46099 "GET /session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.431/text HTTP/11" 200 0
+ 2024-09-11 14:10:53,704 - DEBUG - Remote response: status=200 | data={"value":"次の問題"} | headers=HTTPHeaderDict({'Content-Length': '24', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:53,704 - DEBUG - Finished Request
+ 2024-09-11 14:10:53,705 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.431/click {}
+ 2024-09-11 14:10:56,979 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element/f.8AAEFCE0A0B92739E704E80835314B74.d.3EF5BFA4FEDB24FC8C5FF4326E281B3D.e.431/click HTTP/11" 200 0
+ 2024-09-11 14:10:56,979 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:56,979 - DEBUG - Finished Request
+ 2024-09-11 14:10:56,979 - DEBUG - GET http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/title {}
+ 2024-09-11 14:10:56,985 - DEBUG - http://localhost:46099 "GET /session/3ef371e0dfa0d306be615b6fc7b11a8b/title HTTP/11" 200 0
+ 2024-09-11 14:10:56,985 - DEBUG - Remote response: status=200 | data={"value":"ビズリーチ 料金表｜導入費用の詳細はこちら【企業向け】"} | headers=HTTPHeaderDict({'Content-Length': '91', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:10:56,985 - DEBUG - Finished Request
+ 2024-09-11 14:10:56,985 - DEBUG - i = 2, driver.title = 'ビズリーチ 料金表｜導入費用の詳細はこちら【企業向け】'
+ 2024-09-11 14:10:56,985 - DEBUG - POST http://localhost:46099/session/3ef371e0dfa0d306be615b6fc7b11a8b/element {'using': 'css selector', 'value': '.grayText'}
+ 2024-09-11 14:11:07,011 - DEBUG - http://localhost:46099 "POST /session/3ef371e0dfa0d306be615b6fc7b11a8b/element HTTP/11" 404 0
+ 2024-09-11 14:11:07,011 - DEBUG - Remote response: status=404 | data={"value":{"error":"no such element","message":"no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\".grayText\"}\n  (Session info: chrome=128.0.6613.137)","stacktrace":"#0 0x5643a78632da \u003Cunknown>\n#1 0x5643a7531200 \u003Cunknown>\n#2 0x5643a7580aa2 \u003Cunknown>\n#3 0x5643a7580d41 \u003Cunknown>\n#4 0x5643a75c6964 \u003Cunknown>\n#5 0x5643a75a58fd \u003Cunknown>\n#6 0x5643a75c3dfd \u003Cunknown>\n#7 0x5643a75a5673 \u003Cunknown>\n#8 0x5643a7573473 \u003Cunknown>\n#9 0x5643a757447e \u003Cunknown>\n#10 0x5643a782a0db \u003Cunknown>\n#11 0x5643a782e071 \u003Cunknown>\n#12 0x5643a78169d5 \u003Cunknown>\n#13 0x5643a782ebf2 \u003Cunknown>\n#14 0x5643a77fbb6f \u003Cunknown>\n#15 0x5643a7852248 \u003Cunknown>\n#16 0x5643a7852417 \u003Cunknown>\n#17 0x5643a78620cc \u003Cunknown>\n#18 0x7f9892669ac3 \u003Cunknown>\n"}} | headers=HTTPHeaderDict({'Content-Length': '861', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+ 2024-09-11 14:11:07,012 - DEBUG - Finished Request
