@@ -21,7 +21,6 @@ def click_next_button(driver):
         next_button = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.submit.sendConfigform.hover'))
         )
-        # print('next_button.text: ', next_button.text)
         logging.debug('next_button.text: %s', next_button.text) # NOTE: これでいいの？
         next_button.click()
     except Exception as e:
@@ -66,7 +65,6 @@ def scrape_question_text(driver):
     question_text = question_element.text.strip(option_text).strip()
     return question_text
 
-
 def collect_question_data(driver):
     year, ques_num, opt_num = scrape_question_info(driver)
     question_text = scrape_question_text(driver)
@@ -93,7 +91,6 @@ def write_data_to_csv(driver, num_questions, filename='takken_questions.csv'):
         
         writer.writeheader()
         for i in range(num_questions):
-            # print(driver.title)
             logging.debug(f'{i = }, {driver.title = }')
             data_dic = collect_question_data(driver)
             writer.writerow(data_dic) 
