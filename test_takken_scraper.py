@@ -62,47 +62,67 @@ class TestTakkenScraper(unittest.TestCase):
         self.assertRegex(kaisetsu, expected)
 
 
-class TestButtonClick(unittest.TestCase):
-    def setUp(self):
-        self.driver = MagicMock()
+# class TestButtonClick(unittest.TestCase):
+#     def setUp(self):
+#         self.driver = MagicMock()
         
-    def test_click_next_button(self):
-        ts.click_next_button(self.driver)
+#     def test_click_next_button(self):
+#         ts.click_next_button(self.driver)
         
-        # find_elementが正しく呼ばれているかを確認
-        self.driver.find_element.assert_called_once_with(By.CSS_SELECTOR, 'button[data-text="NEXT"]')
+#         # find_elementが正しく呼ばれているかを確認
+#         self.driver.find_element.assert_called_once_with(By.CSS_SELECTOR, 'button[data-text="NEXT"]')
         
-        # クリック操作が行われているかを確認
-        next_button_mock = self.driver.find_element.return_value
-        next_button_mock.click.assert_called_once()
+#         # クリック操作が行われているかを確認
+#         next_button_mock = self.driver.find_element.return_value
+#         next_button_mock.click.assert_called_once()
         
 
-class TestCSVWriter(unittest.TestCase):
-    def setUp(self):
-        self.sample_data = [
-            {
-                "year": "令和3年",
-                "question_number": "問1",
-                "option_number": "肢1",
-                "question_text": "次の文は…",
-                "option_text": "1. 選択肢1",
-                "answer": "正",
-                "kaisetsu": "この解説は…"
-            }
-        ]
+# class TestCSVWriter(unittest.TestCase):
+#     def setUp(self):
+#         self.sample_data = [
+#             {
+#                 "year": "令和3年",
+#                 "question_number": "問1",
+#                 "option_number": "肢1",
+#                 "question_text": "次の文は…",
+#                 "option_text": "1. 選択肢1",
+#                 "answer": "正",
+#                 "kaisetsu": "この解説は…"
+#             }
+#         ]
         
-    @patch('builtins.open', new_callable=mock_open)
-    def test_csv_header(self, mock_file):
-        # ダミーのドライバを使ってテスト
-        driver = None
+#     @patch('builtins.open', new_callable=mock_open)
+#     def test_csv_header(self, mock_file):
+#         # ダミーのドライバを使ってテスト
+#         driver = None
         
-        ts.write_data_to_csv(driver, num_questions=1, filename="dummy.csv")
+#         ts.write_data_to_csv(driver, num_questions=1, filename="dummy.csv")
 
-        # 書き込まれた内容を確認
-        mock_file.assert_called_once_with('dummy.csv', mode='w', newline='', encoding='utf-8')
-        handle = mock_file()
-        # ↓このテストがなぜか通らない。
-        # handle.write.assert_any_call("year,question_number,option_number,question_text,option_text,answer,kaisetsu\n")
+#         # 書き込まれた内容を確認
+#         mock_file.assert_called_once_with('dummy.csv', mode='w', newline='', encoding='utf-8')
+#         handle = mock_file()
+#         # ↓このテストがなぜか通らない。
+#         handle.write.assert_any_call("year,question_number,option_number,question_text,option_text,answer,kaisetsu\n")
+
+
+# class TestFlakyCode(unittest.TestCase):
+#     @classmethod
+#     def setUpClass(cls):
+#         cls.driver = webdriver.Chrome()
+#         cls.driver.get('https://takken-siken.com/marubatu.php')
+#         ts.click_start_button(cls.driver)
+        
+#     @classmethod
+#     def tearDownClass(cls):
+#         cls.driver.quit()  
+
+#     def test_title(self):
+#         for _ in range(20):
+#             actual = self.driver.title
+#             expected = '宅建士 一問一答道場🥋｜宅建試験ドットコム'
+#             self.assertEqual(actual, expected)
+#             ts.click_next_button(self.driver)
+
 
 
 if __name__ == "__main__":

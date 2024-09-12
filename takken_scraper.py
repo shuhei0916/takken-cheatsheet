@@ -18,10 +18,13 @@ def click_start_button(driver): # WARNING: click_start_button()は副作用が�
 
 def click_next_button(driver):
     try: 
-        next_button = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.submit.sendConfigform.hover'))
-        )
-        logging.debug('next_button.text: %s', next_button.text) # NOTE: これでいいの？
+        # next_button = WebDriverWait(driver, 10).until(
+        #     EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.submit.sendConfigform.hover'))
+        # )
+        # logging.debug('next_button.text: %s', next_button.text) # NOTE: これでいいの？
+        next_button = driver.find_element(By.CSS_SELECTOR, "button.submit.sendConfigform.hover[data-text='NEXT']")
+        print(next_button.text)
+        # if next_button.text == '次の問題':
         next_button.click()
     except Exception as e:
         print(f"エラーが発生しました:{e}")
@@ -92,11 +95,20 @@ def write_data_to_csv(driver, num_questions, filename='takken_questions.csv'):
         writer.writeheader()
         for i in range(num_questions):
             logging.debug(f'{i = }, {driver.title = }')
+            print(driver.title)
+            print(check_title(driver))
+
             data_dic = collect_question_data(driver)
             writer.writerow(data_dic) 
             
             click_next_button(driver)
 
+def check_title(driver):
+    if driver.title == '宅建士 一問一答道場🥋｜宅建試験ドットコム':
+        return True
+    else:
+        return False
+    # print(driver.title)
 
 def main():
     driver = webdriver.Chrome() 
