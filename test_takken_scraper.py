@@ -21,7 +21,7 @@ class TestTakkenScraper(unittest.TestCase):
         cls.driver = webdriver.Chrome()
         cls.driver.get('https://takken-siken.com/marubatu.php')
         
-        ts.start_button_click(cls.driver)
+        ts.click_start_button(cls.driver)
         
     @classmethod
     def tearDownClass(cls):
@@ -37,27 +37,27 @@ class TestTakkenScraper(unittest.TestCase):
         self.assertIn("。", option_text) # 句読点が含まれているかどうかのみをテストしている。
     
     def test_scraper_year(self):
-        year, _, _ = ts.scrape_info(self.driver)
+        year, _, _ = ts.scrape_question_info(self.driver)
         expected = r"(平成|令和)" # NOTE: 平成と令和という文字列が含まれていることのみを確認
         self.assertRegex(year, expected)
         
     def test_scrape_ques_num(self):
-        _, ques_num, _ = ts.scrape_info(self.driver)
+        _, ques_num, _ = ts.scrape_question_info(self.driver)
         expected = r"問\d+"
         self.assertRegex(ques_num, expected)
         
     def test_scrape_ques_num(self):
-        _, _, opt_num = ts.scrape_info(self.driver)
+        _, _, opt_num = ts.scrape_question_info(self.driver)
         expected = r"肢\d+"
         self.assertRegex(opt_num, expected)
         
     def test_scrape_answer(self):
-        answer = ts.scrape_answer(self.driver)
+        answer = ts.scrape_correct_answer(self.driver)
         expected = r"(正|誤)"
         self.assertRegex(answer, expected)
         
-    def test_scrape_kaisetsu(self):
-        kaisetsu = ts.scrape_kaisetsu(self.driver)
+    def test_scrape_explanation(self):
+        kaisetsu = ts.scrape_explanation(self.driver)
         expected = r"(誤り|正しい|不適当|適当|違反する|違反しない)" # NOTE: 必要なテストケース全てを網羅できているわけではない
         self.assertRegex(kaisetsu, expected)
 
@@ -66,8 +66,8 @@ class TestButtonClick(unittest.TestCase):
     def setUp(self):
         self.driver = MagicMock()
         
-    def test_next_button_click(self):
-        ts.next_button_click(self.driver)
+    def test_click_next_button(self):
+        ts.click_next_button(self.driver)
         
         # find_elementが正しく呼ばれているかを確認
         self.driver.find_element.assert_called_once_with(By.CSS_SELECTOR, 'button[data-text="NEXT"]')
