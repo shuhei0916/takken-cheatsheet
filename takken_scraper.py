@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 import csv
 import logging
 import time
+from selenium.webdriver.chrome.options import Options
 
 logging.basicConfig(filename='log_takken_scraper.txt', filemode='w', level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - %(message)s')
 
@@ -119,7 +120,10 @@ def check_title(driver):
     # print(driver.title)
 
 def main():
-    driver = webdriver.Chrome() 
+    chrome_options = Options()
+    chrome_options.add_extension('./data/extension/adblocker.crx')
+
+    driver = webdriver.Chrome(options=chrome_options) 
     driver.implicitly_wait(10)
     driver.get('https://takken-siken.com/marubatu.php')
         
