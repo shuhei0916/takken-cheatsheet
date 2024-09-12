@@ -33,6 +33,9 @@ def click_next_button(driver):
     except Exception as e:
         print(f"エラーが発生しました:{e}")
 
+def click_pass_button(driver):
+    return None
+
 def get_question_elements(driver): 
     question_elements = driver.find_elements(By.CSS_SELECTOR, "section.content")
     return question_elements
@@ -121,7 +124,9 @@ def main():
         
     click_start_button(driver)
     
-    write_data_to_csv(driver, num_questions=20, filename="./data/sample.csv")
+    click_pass_button(driver)
+
+    # write_data_to_csv(driver, num_questions=20, filename="./data/sample.csv")
     
     driver.quit()
     
