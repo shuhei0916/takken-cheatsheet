@@ -61,6 +61,22 @@ class TestTakkenScraper(unittest.TestCase):
         expected = r"(誤り|正しい|不適当|適当|違反する|違反しない)" # NOTE: 必要なテストケース全てを網羅できているわけではない
         self.assertRegex(kaisetsu, expected)
 
+class TestClickButtons(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        # クラス全体で一回だけwebdriverを初期化(setupメソッドは各テストメソッドの前に呼ばれる)
+        cls.driver = webdriver.Chrome()
+        cls.driver.get('https://takken-siken.com/marubatu.php')
+        
+        ts.click_start_button(cls.driver)
+        
+    @classmethod
+    def tearDownClass(cls):
+        # 全テスト後にwebdriverを終了
+        cls.driver.quit()
+
+    def test_click_pass_button(self):
+        self.assertEqual(1, 2) 
 
 # class TestButtonClick(unittest.TestCase):
 #     def setUp(self):

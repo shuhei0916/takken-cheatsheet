@@ -22,10 +22,14 @@ def click_next_button(driver):
         #     EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.submit.sendConfigform.hover'))
         # )
         # logging.debug('next_button.text: %s', next_button.text) # NOTE: これでいいの？
-        next_button = driver.find_element(By.CSS_SELECTOR, "button.submit.sendConfigform.hover[data-text='NEXT']")
-        print(next_button.text)
-        # if next_button.text == '次の問題':
-        next_button.click()
+        next_buttons = driver.find_elements(By.CSS_SELECTOR, "button.submit.sendConfigform.hover[data-text='NEXT']")
+        # print(next_button.text)
+        for button in next_buttons:
+            print('innerHTML: ', button.get_attribute('innerHTML'))
+            if button.text == '次の問題':
+                button.click()
+
+
     except Exception as e:
         print(f"エラーが発生しました:{e}")
 
@@ -95,8 +99,8 @@ def write_data_to_csv(driver, num_questions, filename='takken_questions.csv'):
         writer.writeheader()
         for i in range(num_questions):
             logging.debug(f'{i = }, {driver.title = }')
-            print(driver.title)
-            print(check_title(driver))
+            # print(driver.title)
+            # print(check_title(driver))
 
             data_dic = collect_question_data(driver)
             writer.writerow(data_dic) 
