@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import csv
 import logging
+import time
 
 logging.basicConfig(filename='log_takken_scraper.txt', filemode='w', level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - %(message)s')
 
@@ -18,23 +19,23 @@ def click_start_button(driver): # WARNING: click_start_button()は副作用が�
 
 def click_next_button(driver):
     try: 
-        # next_button = WebDriverWait(driver, 10).until(
-        #     EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.submit.sendConfigform.hover'))
-        # )
         # logging.debug('next_button.text: %s', next_button.text) # NOTE: これでいいの？
-        next_buttons = driver.find_elements(By.CSS_SELECTOR, "button.submit.sendConfigform.hover[data-text='NEXT']")
-        # print(next_button.text)
-        for button in next_buttons:
-            print('innerHTML: ', button.get_attribute('innerHTML'))
-            if button.text == '次の問題':
-                button.click()
-
+        next_button = driver.find_element(By.CSS_SELECTOR, "button.submit.sendConfigform.hover[data-text='NEXT']")
+        if next_button.text == '次の問題':
+            next_button.click()
+            # print('next_button clicked!')
 
     except Exception as e:
         print(f"エラーが発生しました:{e}")
 
 def click_pass_button(driver):
-    return None
+    pass_button = driver.find_element(By.CSS_SELECTOR, 'button.hover')  # class属性がhoverのボタンを取得
+    if pass_button.text == 'パス':
+        pass_button.click()  # ボタンをクリック
+        # print('pass_button clicked!')
+
+    # print(pass_button.text)
+
 
 def get_question_elements(driver): 
     question_elements = driver.find_elements(By.CSS_SELECTOR, "section.content")
@@ -124,7 +125,17 @@ def main():
         
     click_start_button(driver)
     
-    click_pass_button(driver)
+    for _ in range(30):
+        if not check_title:
+            print(f'{check_title = }')
+            driver.back()
+
+
+        click_pass_button(driver)
+        time.sleep(0.5)
+
+        click_next_button(driver)
+        # time.sleep(1)
 
     # write_data_to_csv(driver, num_questions=20, filename="./data/sample.csv")
     
