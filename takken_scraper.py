@@ -121,7 +121,11 @@ def check_title(driver):
 
 def main():
     chrome_options = Options()
-    chrome_options.add_extension('./data/extension/adblocker.crx')
+    chrome_options.add_extension('./data/extension/adblock.crx')
+    chrome_options.add_argument("--disable-cache")
+    chrome_options.add_argument("--disable-application-cache")
+    # chrome_options.add_argument("--incognito")  # シークレットモードで実行
+
 
     driver = webdriver.Chrome(options=chrome_options) 
     driver.implicitly_wait(10)
