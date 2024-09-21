@@ -131,7 +131,7 @@ def check_title(driver):
         return False
     # print(driver.title)
 
-def main():
+def main(): 
     driver = webdriver.Chrome()
     driver.implicitly_wait(10)
     driver.get('https://takken-siken.com/marubatu.php')
@@ -146,8 +146,6 @@ def main():
     # driver.execute_script(remove_ads_script)
         
     click_start_button(driver)
-    
-    sfile = driver.get_screenshot_as_file('data/screenshot.png')
     
     for _ in range(50):
         if not check_title:
