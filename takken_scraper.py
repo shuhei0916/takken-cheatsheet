@@ -8,6 +8,8 @@ import csv
 import logging
 import time
 from selenium.webdriver.chrome.options import Options
+from selenium.common.exceptions import StaleElementReferenceException, TimeoutException  # StaleElementReferenceExceptionをインポート(必要か？)
+
 
 logging.basicConfig(filename='log_takken_scraper.txt', filemode='w', level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - %(message)s')
 
@@ -30,12 +32,22 @@ def click_next_button(driver):
         print(f"エラーが発生しました:{e}")
 
 def click_pass_button(driver):
-    pass_button = driver.find_element(By.CSS_SELECTOR, 'button.hover')  # class属性がhoverのボタンを取得
-    if pass_button.text == 'パス':
-        pass_button.click()  # ボタンをクリック
-        # print('pass_button clicked!')
-
-    # print(pass_button.text)
+    try:
+        # パスボタンがクリック可能になるまで最大10秒待機
+        pass_button = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.hover'))
+        )
+        
+        # 要素のテキストが "パス" か確認
+        if pass_button.text == 'パス':
+            pass_button.click()
+    except StaleElementReferenceException:
+        # 要素がステールになった場合、再取得してリトライ
+        pass_button = WebDriverWait(driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.hover'))
+        )
+        if pass_button.text == 'パス':
+            pass_button.click()
 
 
 def get_question_elements(driver): 
@@ -120,20 +132,24 @@ def check_title(driver):
     # print(driver.title)
 
 def main():
-    chrome_options = Options()
-    chrome_options.add_extension('./data/extension/adblock.crx')
-    chrome_options.add_argument("--disable-cache")
-    chrome_options.add_argument("--disable-application-cache")
-    # chrome_options.add_argument("--incognito")  # シークレットモードで実行
-
-
-    driver = webdriver.Chrome(options=chrome_options) 
+    driver = webdriver.Chrome()
     driver.implicitly_wait(10)
     driver.get('https://takken-siken.com/marubatu.php')
+    
+    # # 広告を削除するためのJavaScriptを実行
+    # remove_ads_script = """
+    #     var ads = document.querySelectorAll('ins.adsbygoogle, iframe, .ads_content');
+    #     ads.forEach(function(ad) {
+    #         ad.remove();
+    #     });
+    # """
+    # driver.execute_script(remove_ads_script)
         
     click_start_button(driver)
     
-    for _ in range(30):
+    sfile = driver.get_screenshot_as_file('data/screenshot.png')
+    
+    for _ in range(50):
         if not check_title:
             print(f'{check_title = }')
             driver.back()
