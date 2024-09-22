@@ -34,6 +34,8 @@
 
 - [ ] 異常系のテストも書く
 - [ ] エラーハンドリングを書く
+- [ ] webdriver.wait, staleelementReferenceExceptionについてもう少し調べる(https://www.seleniumqref.com/api/python/conditions/Python_element_to_be_clickable.html
+)
 
 
 ## 全体の流れ:

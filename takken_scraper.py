@@ -28,7 +28,6 @@ def click_next_button(driver):
                 f.write(driver.page_source)
             next_button.click()
             # print('next_button clicked!')
-
     except Exception as e:
         print(f"エラーが発生しました:{e}")
 
@@ -133,19 +132,29 @@ def main():
             
     click_start_button(driver)
     
-    for _ in range(50):
-        if not check_title:
-            print(f'{check_title = }')
-            driver.back()
+    csv_file = 'data/sample.csv'
+    fieldnames = ["year", "question_number", "option_number", "question_text", "option_text", "answer", "kaisetsu"]
+    with open(csv_file, mode='w', newline='', encoding='utf-8-sig') as file: # windows環境ではnewline=''としておくと安全らしい
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        writer.writeheader()
+    
+        for i in range(50):
+            if not check_title:
+                print(f'{check_title = }')
+                driver.back()
+                
+            # logging.debug(f'{i = }, {driver.title = }')
 
+            data_dic = collect_question_data(driver)
+            writer.writerow(data_dic) 
+            
+            # click_next_button(driver)
 
-        click_pass_button(driver)
-        time.sleep(0.5)
+            click_pass_button(driver)
+            time.sleep(0.5)
 
-        click_next_button(driver)
-        # time.sleep(1)
-
-    # write_data_to_csv(driver, num_questions=20, filename="./data/sample.csv")
+            click_next_button(driver)
+            # time.sleep(1)
     
     driver.quit()
     
