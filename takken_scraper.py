@@ -22,9 +22,10 @@ def click_start_button(driver): # WARNING: click_start_button()は副作用が�
 
 def click_next_button(driver):
     try: 
-        # logging.debug('next_button.text: %s', next_button.text) # NOTE: これでいいの？
         next_button = driver.find_element(By.CSS_SELECTOR, "button.submit.sendConfigform.hover[data-text='NEXT']")
         if next_button.text == '次の問題':
+            with open('data/page_source.txt', mode='w') as f:
+                f.write(driver.page_source)
             next_button.click()
             # print('next_button clicked!')
 
@@ -33,10 +34,7 @@ def click_next_button(driver):
 
 def click_pass_button(driver):
     try:
-        # パスボタンがクリック可能になるまで最大10秒待機
-        pass_button = WebDriverWait(driver, 10).until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.hover'))
-        )
+        pass_button = driver.find_element(By.CSS_SELECTOR, 'button.hover')
         
         # 要素のテキストが "パス" か確認
         if pass_button.text == 'パス':
@@ -116,8 +114,6 @@ def write_data_to_csv(driver, num_questions, filename='takken_questions.csv'):
         writer.writeheader()
         for i in range(num_questions):
             logging.debug(f'{i = }, {driver.title = }')
-            # print(driver.title)
-            # print(check_title(driver))
 
             data_dic = collect_question_data(driver)
             writer.writerow(data_dic) 
@@ -129,22 +125,12 @@ def check_title(driver):
         return True
     else:
         return False
-    # print(driver.title)
 
 def main(): 
     driver = webdriver.Chrome()
     driver.implicitly_wait(10)
     driver.get('https://takken-siken.com/marubatu.php')
-    
-    # # 広告を削除するためのJavaScriptを実行
-    # remove_ads_script = """
-    #     var ads = document.querySelectorAll('ins.adsbygoogle, iframe, .ads_content');
-    #     ads.forEach(function(ad) {
-    #         ad.remove();
-    #     });
-    # """
-    # driver.execute_script(remove_ads_script)
-        
+            
     click_start_button(driver)
     
     for _ in range(50):
