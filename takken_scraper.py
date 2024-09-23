@@ -1,5 +1,3 @@
-import requests, bs4
-import re
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -27,14 +25,12 @@ def click_next_button(driver):
             with open('data/page_source.txt', mode='w') as f:
                 f.write(driver.page_source)
             next_button.click()
-            # print('next_button clicked!')
     except Exception as e:
         print(f"エラーが発生しました:{e}")
 
 def click_pass_button(driver):
     try:
         pass_button = driver.find_element(By.CSS_SELECTOR, 'button.hover')
-        
         # 要素のテキストが "パス" か確認
         if pass_button.text == 'パス':
             pass_button.click()
@@ -52,18 +48,23 @@ def get_question_elements(driver):
     return question_elements
 
 def scrape_question_info(driver):
-    gray_text = driver.find_element(By.CSS_SELECTOR, ".grayText")
-    full_text = gray_text.get_attribute("innerHTML")
-    info, ques_num = full_text.split("<br>")
-    
-    year, ques_num, opt_num = info.split(" ")
-    return year, ques_num, opt_num
+    try:
+        # grayText要素が表示されるまで最大10秒待機
+        gray_text = WebDriverWait(driver, 10).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, ".grayText"))
+        )
+        full_text = gray_text.get_attribute("innerHTML")
+        info, ques_num = full_text.split("<br>")
+        year, ques_num, opt_num = info.split(" ")
+        return year, ques_num, opt_num
+    except StaleElementReferenceException:
+        print("要素がステールになりました。再試行してください。")
+        print(driver.page_source)
 
 def scrape_correct_answer(driver):
     kaisetsu_element = driver.find_element(By.CLASS_NAME, "kaisetsu")
     answer_char_element = kaisetsu_element.find_element(By.CLASS_NAME, "answerChar")    
     result = answer_char_element.get_attribute("innerHTML")
-    
     if "batu" in result:
         return "誤"
     elif "maru" in result:

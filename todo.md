@@ -1,18 +1,5 @@
 # TODO:
 ## TDD:
-- [x] 出題開始ボタンを押す関数を定義する
-- [x] 対象のウェブページから必要な情報をスクレイピングする関数を作成する。
-    - [x] 問題文を取得する。
-    - [x] 選択択文を取得する。
-    - [x] 年度を取得する。
-    - [x] 問題番号を取得する。
-    - [x] 択番号を取得する
-    - [x] 正誤を取得する
-    - [x] 解説を取得する。
-- [x] nextボタンをクリックする関数を書く　
-- [x] 問題の重複を取り除く
-    - [x] パスボタンを押す関数を定義する
-    - [x] パスボタンを押してからnextボタンを押すように変更する
 - [ ] next_bottonをクリックするとき、稀に別の要素（広告など）をクリックしてしまう問題を解決する
     - [ ] nextボタンがクリックできるようになるまで待機するロジックを実装する
     - [ ] click_next_button()のロジックを見直す。
@@ -20,18 +7,11 @@
     - [ ] adblockerを入れる
 - [ ] csvファイルにまとめる部分を書く
     - [x] mockについて調べる（assert_called_once_withとか）
-    - [xs] csvファイルにヘッダーを書き込む
+    - [x] csvファイルにヘッダーを書き込む
     - [ ] スクレイピングによって取得したデータをcsvファイルに書き込む
 
 
 ## Other:
-- [ ] workflowのymlファイル作る
-- [ ] unittestの構造化について調べる（どの単位でテストクラスを作るべきなのか等）
-- [ ] seleniumで開いたブラウザが文字化けする問題を解決する。
-
-- [ ] seleniumでのjavascriptの実行について調べる。
-- [ ] Ajaxについて調べる。
-
 - [ ] 異常系のテストも書く
 - [ ] エラーハンドリングを書く
 - [ ] webdriver.wait, staleelementReferenceExceptionについてもう少し調べる(https://www.seleniumqref.com/api/python/conditions/Python_element_to_be_clickable.html
