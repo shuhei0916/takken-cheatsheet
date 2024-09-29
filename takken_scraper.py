@@ -50,16 +50,19 @@ def get_question_elements(driver):
 def scrape_question_info(driver):
     try:
         # grayText要素が表示されるまで最大10秒待機
-        gray_text = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.CSS_SELECTOR, ".grayText"))
-        )
+        # gray_text = WebDriverWait(driver, 10).until(
+        #     EC.presence_of_element_located((By.CSS_SELECTOR, ".grayText"))
+        # )
+        gray_text = driver.find_element(By.CSS_SELECTOR, ".grayText")
         full_text = gray_text.get_attribute("innerHTML")
         info, ques_num = full_text.split("<br>")
         year, ques_num, opt_num = info.split(" ")
         return year, ques_num, opt_num
-    except StaleElementReferenceException:
-        print("要素がステールになりました。再試行してください。")
-        print(driver.page_source)
+    except Exception as e:
+        print(f'エラーが発生しました:{e}')
+    # except StaleElementReferenceException:
+    #     print("要素がステールになりました。再試行してください。")
+    #     print(driver.page_source)
 
 def scrape_correct_answer(driver):
     kaisetsu_element = driver.find_element(By.CLASS_NAME, "kaisetsu")
