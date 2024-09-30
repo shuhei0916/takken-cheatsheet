@@ -132,13 +132,13 @@ def write_data_to_csv(driver, num_questions, filename='takken_questions.csv'):
 
 def check_title(driver, expected_title):
     return driver.title == expected_title
-    # if driver.title == '宅建士 一問一答道場🥋｜宅建試験ドットコム':
-    #     return True
-    # else:
-    #     return False
 
 def main(): 
-    driver = webdriver.Chrome()
+    options = webdriver.ChromeOptions()
+    options.add_argument("--disable-cache")
+    driver = webdriver.Chrome(options=options)
+    
+    # driver = webdriver.Chrome()
     driver.implicitly_wait(10)
     driver.get('https://takken-siken.com/marubatu.php')
             
@@ -151,9 +151,10 @@ def main():
         writer.writeheader()
     
         for i in range(50):
-            if not check_title(driver, '宅建士 一問一答道場🥋｜宅建試験ドットコム'):
+            if driver.title != '宅建士 一問一答道場🥋｜宅建試験ドットコム':
                 print(f'Unexpected title, going back: {driver.title}')
                 driver.back()
+                driver.get_screenshot_as_file('./data/screenshot.png')
                 
             # logging.debug(f'{i = }, {driver.title = }')
 
