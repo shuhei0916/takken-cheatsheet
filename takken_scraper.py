@@ -49,20 +49,20 @@ def get_question_elements(driver):
 
 def scrape_question_info(driver):
     try:
-        # grayText要素が表示されるまで最大10秒待機
-        # gray_text = WebDriverWait(driver, 10).until(
-        #     EC.presence_of_element_located((By.CSS_SELECTOR, ".grayText"))
-        # )
         gray_text = driver.find_element(By.CSS_SELECTOR, ".grayText")
         full_text = gray_text.get_attribute("innerHTML")
-        info, ques_num = full_text.split("<br>")
-        year, ques_num, opt_num = info.split(" ")
-        return year, ques_num, opt_num
-    except Exception as e:
-        print(f'エラーが発生しました:{e}')
-    # except StaleElementReferenceException:
-    #     print("要素がステールになりました。再試行してください。")
-    #     print(driver.page_source)
+        # info, ques_num = full_text.split("<br>")
+        # year, ques_num, opt_num = info.split(" ")
+    except StaleElementReferenceException:
+        print("要素がステールになりました。再試行します。")
+        # print(driver.page_source)
+        gray_text = driver.find_element(By.CSS_SELECTOR, ".grayText")
+        full_text = gray_text.get_attribute("innerHTML")
+    info, ques_num = full_text.split("<br>")
+    year, ques_num, opt_num = info.split(" ")
+        
+    return year, ques_num, opt_num
+        
 
 def scrape_correct_answer(driver):
     kaisetsu_element = driver.find_element(By.CLASS_NAME, "kaisetsu")
@@ -85,9 +85,16 @@ def scrape_option_text(driver):
     return option_text
 
 def scrape_question_text(driver):
-    question_element = driver.find_element(By.XPATH, "//section[@class='content']/div")
-    option_text = scrape_option_text(driver)
-    question_text = question_element.text.strip(option_text).strip()
+    try:
+        question_element = driver.find_element(By.XPATH, "//section[@class='content']/div")
+        option_text = scrape_option_text(driver)
+        question_text = question_element.text.strip(option_text).strip()
+    except StaleElementReferenceException:
+        time.sleep(1)
+        question_element = driver.find_element(By.XPATH, "//section[@class='content']/div")
+        option_text = scrape_option_text(driver)
+        question_text = question_element.text.strip(option_text).strip()
+        
     return question_text
 
 def collect_question_data(driver):
@@ -123,11 +130,12 @@ def write_data_to_csv(driver, num_questions, filename='takken_questions.csv'):
             
             click_next_button(driver)
 
-def check_title(driver):
-    if driver.title == '宅建士 一問一答道場🥋｜宅建試験ドットコム':
-        return True
-    else:
-        return False
+def check_title(driver, expected_title):
+    return driver.title == expected_title
+    # if driver.title == '宅建士 一問一答道場🥋｜宅建試験ドットコム':
+    #     return True
+    # else:
+    #     return False
 
 def main(): 
     driver = webdriver.Chrome()
@@ -143,14 +151,14 @@ def main():
         writer.writeheader()
     
         for i in range(50):
-            if not check_title:
-                print(f'{check_title = }')
+            if not check_title(driver, '宅建士 一問一答道場🥋｜宅建試験ドットコム'):
+                print(f'Unexpected title, going back: {driver.title}')
                 driver.back()
                 
             # logging.debug(f'{i = }, {driver.title = }')
 
-            data_dic = collect_question_data(driver)
-            writer.writerow(data_dic) 
+            # data_dic = collect_question_data(driver)
+            # writer.writerow(data_dic) 
             
             # click_next_button(driver)
 
