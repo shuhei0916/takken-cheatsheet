@@ -61,6 +61,20 @@ class TestTakkenScraper(unittest.TestCase):
         expected = r"(誤り|正しい|不適当|適当|違反する|違反しない)" # NOTE: 必要なテストケース全てを網羅できているわけではない
         self.assertRegex(kaisetsu, expected)
 
+class TestSelectCategories(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.driver = webdriver.Chrome()
+        cls.driver.get('https://takken-siken.com/marubatu.php')
+                
+    @classmethod
+    def tearDownClass(cls):
+        cls.driver.quit()
+        
+    def test_hoge(self):
+        self.assertEqual(1, 2)
+
+
 # class TestClickButtons(unittest.TestCase):
 #     @classmethod
 #     def setUpClass(cls):
