@@ -9,7 +9,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import StaleElementReferenceException, TimeoutException  # StaleElementReferenceExceptionをインポート(必要か？)
 
 
-logging.basicConfig(filename='log_takken_scraper.txt', filemode='w', level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename='takken_scraper.log', filemode='w', level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - %(message)s')
 
 def click_start_button(driver): # WARNING: click_start_button()は副作用があることに注意。button.clickによりページが遷移している。
     try: 
@@ -22,25 +22,26 @@ def click_next_button(driver):
     try: 
         next_button = driver.find_element(By.CSS_SELECTOR, "button.submit.sendConfigform.hover[data-text='NEXT']")
         if next_button.text == '次の問題':
-            with open('data/page_source.txt', mode='w') as f:
-                f.write(driver.page_source)
             next_button.click()
+            logging.debug(f'pass button clicked!')
     except Exception as e:
         print(f"エラーが発生しました:{e}")
 
 def click_pass_button(driver):
     try:
         pass_button = driver.find_element(By.CSS_SELECTOR, 'button.hover')
-        # 要素のテキストが "パス" か確認
-        if pass_button.text == 'パス':
-            pass_button.click()
+        # # 要素のテキストが "パス" か確認
+        # if pass_button.text == 'パス':
+        #     pass_button.click()
     except StaleElementReferenceException:
         # 要素がステールになった場合、再取得してリトライ
         pass_button = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, 'button.hover'))
         )
-        if pass_button.text == 'パス':
-            pass_button.click()
+    if pass_button.text == 'パス':
+        pass_button.click()
+        logging.debug(f'pass button clicked!')
+        
 
 
 def get_question_elements(driver): 
@@ -151,21 +152,21 @@ def main():
         writer.writeheader()
     
         for i in range(50):
+            logging.debug(f'{i = }, {driver.title = }')
             if driver.title != '宅建士 一問一答道場🥋｜宅建試験ドットコム':
                 print(f'Unexpected title, going back: {driver.title}')
                 driver.back()
+                driver.refresh() # NOTE: 問題の進行の履歴が損なわれてしまうかもしれない
                 driver.get_screenshot_as_file('./data/screenshot.png')
                 
-            # logging.debug(f'{i = }, {driver.title = }')
-
             # data_dic = collect_question_data(driver)
             # writer.writerow(data_dic) 
             
             # click_next_button(driver)
 
+            time.sleep(0.5)
             click_pass_button(driver)
             time.sleep(0.5)
-
             click_next_button(driver)
             # time.sleep(1)
     
