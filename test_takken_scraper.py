@@ -61,7 +61,7 @@ class TestTakkenScraper(unittest.TestCase):
         expected = r"(誤り|正しい|不適当|適当|違反する|違反しない)" # NOTE: 必要なテストケース全てを網羅できているわけではない
         self.assertRegex(kaisetsu, expected)
 
-class TestSelectCategories(unittest.TestCase):
+class TestSelectCategory(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.driver = webdriver.Chrome()
@@ -70,9 +70,13 @@ class TestSelectCategories(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
-        
-    def test_hoge(self):
-        self.assertEqual(1, 2)
+
+    #  def test_hoge(self):
+    #     self.assertEqual(1, 2)
+    
+    def test_select_main_category(self):
+        checkbox = self.driver.find_element(By.XPATH, '//input[@name="fields[]" and @value="1"]')
+        self.assertFalse(checkbox.is_selected())
 
 
 # class TestClickButtons(unittest.TestCase):
