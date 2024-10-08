@@ -142,6 +142,7 @@ def toggle_check_all(driver, action):
     driver (webdriver): Selenium WebDriver
     action (str): 'ON'または'OFF'でボタンを切り替える。デフォルトは'ON'。
     """
+    # button_value = "ON" if state else "OFF"   # この書き方はなんだい？！
     if action == "ON":
         check_button = driver.find_element(By.XPATH, '//button[@name="check_all" and @value="input_categories" and text()="ON"]')
     elif action == "OFF":

@@ -92,6 +92,21 @@ class TestSelectCategory(unittest.TestCase):
         for checkbox in all_checkboxes:
             self.assertFalse(checkbox.is_selected(), f"カテゴリ {checkbox.get_attribute('value')} が選択されていますが、選択されていないべきです。")
 
+    def test_select_main_categories(self):
+        main_categories = ['1', '2']
+        ts.select_main_categories(self.driver, main_categories)
+
+        # 全てのメインカテゴリのチェックボックスを確認
+        all_main_checkboxes = self.driver.find_elements(By.XPATH, '//input[@name="fields[]"]')
+
+        # メインカテゴリが期待通りの状態か確認
+        for checkbox in all_main_checkboxes:
+            value = checkbox.get_attribute("value")
+            if value in main_categories:
+                self.assertTrue(checkbox.is_selected(), f"メインカテゴリ {value} が選択されていません")
+            else:
+                self.assertTrue(checkbox.is_selected(), f" メインカテゴリ {value} が選択されていますが、選択されていないべきです")
+
 
 # class TestClickButtons(unittest.TestCase):
 #     @classmethod
