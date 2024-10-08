@@ -1,3 +1,4 @@
 .venv
 takken_scraper.log
 data/
+__pycache__/

@@ -70,13 +70,27 @@ class TestSelectCategory(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
-
-    #  def test_hoge(self):
-    #     self.assertEqual(1, 2)
     
-    def test_select_main_category(self):
-        checkbox = self.driver.find_element(By.XPATH, '//input[@name="fields[]" and @value="1"]')
-        self.assertFalse(checkbox.is_selected())
+    # def test_select_main_category(self):
+    #     checkbox = self.driver.find_element(By.XPATH, '//input[@name="fields[]" and @value="1"]')
+    #     self.assertFalse(checkbox.is_selected())
+    
+    def test_toggle_check_all_on(self):
+        # 全項目のチェックをONにする
+        ts.toggle_check_all(self.driver, action="ON")
+        
+        # 全てのチェックボックスを取得し、すべてが選択されていることを確認
+        all_checkboxes = self.driver.find_elements(By.XPATH, '//input[@name="fields[]"]')
+        for checkbox in all_checkboxes:
+            self.assertTrue(checkbox.is_selected(), f"カテゴリ {checkbox.get_attribute('value')} が選択されていません。")
+
+    
+    def test_toggle_check_all_off(self):
+        ts.toggle_check_all(self.driver, action='OFF')
+
+        all_checkboxes = self.driver.find_elements(By.XPATH, '//input[@name="fields[]"]')
+        for checkbox in all_checkboxes:
+            self.assertFalse(checkbox.is_selected(), f"カテゴリ {checkbox.get_attribute('value')} が選択されていますが、選択されていないべきです。")
 
 
 # class TestClickButtons(unittest.TestCase):

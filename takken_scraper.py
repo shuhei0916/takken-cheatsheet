@@ -134,6 +134,23 @@ def write_data_to_csv(driver, num_questions, filename='takken_questions.csv'):
 def check_title(driver, expected_title):
     return driver.title == expected_title
 
+def toggle_check_all(driver, action):
+    """
+    全項目チェックのON/OFFボタンをクリックする関数。
+
+    Args:
+    driver (webdriver): Selenium WebDriver
+    action (str): 'ON'または'OFF'でボタンを切り替える。デフォルトは'ON'。
+    """
+    if action == "ON":
+        check_button = driver.find_element(By.XPATH, '//button[@name="check_all" and @value="input_categories" and text()="ON"]')
+    elif action == "OFF":
+        check_button = driver.find_element(By.XPATH, '//button[@name="check_all" and @value="input_categories" and text()="OFF"]')
+    else:
+        raise ValueError("Invalid action. Use 'ON', or 'OFF'.")
+    check_button.click()
+        
+
 def main(): 
     options = webdriver.ChromeOptions()
     options.add_argument("--disable-cache")
