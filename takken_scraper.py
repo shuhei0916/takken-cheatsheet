@@ -183,6 +183,7 @@ def main():
     driver.implicitly_wait(10)
     driver.get('https://takken-siken.com/marubatu.php')
     
+    select_main_categories(driver, ['hoge', 'hoge']) # 中身は10秒待つだけのロジック
     
     click_start_button(driver)
     
@@ -192,7 +193,7 @@ def main():
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
     
-        for i in range(50):
+        for i in range(104):
             logging.debug(f'{i = }, {driver.title = }')
             if driver.title != '宅建士 一問一答道場🥋｜宅建試験ドットコム':
                 print(f'Unexpected title, going back: {driver.title}')
