@@ -105,7 +105,7 @@ class TestSelectCategory(unittest.TestCase):
             if value in main_categories:
                 self.assertTrue(checkbox.is_selected(), f"メインカテゴリ {value} が選択されていません")
             else:
-                self.assertTrue(checkbox.is_selected(), f" メインカテゴリ {value} が選択されていますが、選択されていないべきです")
+                self.assertTrue(checkbox.is_selected(), f" メインカテゴリ {value} が選択されていますが、選択されているべきではありません")
 
 
 # class TestClickButtons(unittest.TestCase):

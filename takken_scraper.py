@@ -11,6 +11,28 @@ from selenium.common.exceptions import StaleElementReferenceException, TimeoutEx
 
 logging.basicConfig(filename='takken_scraper.log', filemode='w', level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - %(message)s')
 
+
+def select_main_categories(driver, main_categories):
+    
+    time.sleep(10)
+    
+    # 以下の処理は面倒なので後回し！とりあえず手動でカテゴリを選択します。
+    # toggle_check_all(driver, 'OFF')
+
+    # all_checkboxes = driver.find_elements(By.XPATH, '//input[@name="fields[]"]')
+    # for checkbox in all_checkboxes:
+    #     value = checkbox.get_attribute("value")
+    #     if value in main_categories:
+    #         # 指定されたカテゴリの場合、チェックが入っていなければクリック
+    #         if not checkbox.is_selected():
+    #             checkbox.click()
+    #     else:
+    #         # それ以外のカテゴリはチェックを外す
+    #         if checkbox.is_selected():
+    #             checkbox.click()
+    
+    
+    
 def click_start_button(driver): # WARNING: click_start_button()は副作用があることに注意。button.clickによりページが遷移している。
     try: 
         button = driver.find_element(By.CSS_SELECTOR, "button.submit.sendConfigform.hover[name='start']")
@@ -160,7 +182,8 @@ def main():
     # driver = webdriver.Chrome()
     driver.implicitly_wait(10)
     driver.get('https://takken-siken.com/marubatu.php')
-            
+    
+    
     click_start_button(driver)
     
     csv_file = 'data/sample.csv'
