@@ -201,11 +201,9 @@ def main():
                 driver.refresh() # NOTE: 問題の進行の履歴が損なわれてしまうかもしれない
                 driver.get_screenshot_as_file('./data/screenshot.png')
                 
-            # data_dic = collect_question_data(driver)
-            # writer.writerow(data_dic) 
+            data_dic = collect_question_data(driver)
+            writer.writerow(data_dic) 
             
-            # click_next_button(driver)
-
             time.sleep(0.5)
             click_pass_button(driver)
             time.sleep(0.5)
